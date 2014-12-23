@@ -1,0 +1,54 @@
+public class Node$Innner1 extends java.lang.Object
+{
+    public int i;
+    Node this$0;
+
+    public int method1()
+    {
+        Node$Innner1 this;
+        int i, j, temp$0, temp$1, temp$4;
+        char a, temp$2;
+        Node temp$3;
+
+        this := @this: Node$Innner1;
+        i = 0;
+        j = 0;
+        a = 49;
+        temp$0 = (int) a;
+        temp$1 = temp$0 + i;
+        temp$2 = (char) temp$1;
+        a = temp$2;
+        temp$3 = this.<Node$Innner1: Node this$0>;
+        temp$4 = temp$3.<Node: int d>;
+        return temp$4;
+    }
+
+    private void <init>(Node)
+    {
+        Node$Innner1 this;
+        Node temp$0;
+
+        this := @this: Node$Innner1;
+        temp$0 := @parameter0: Node;
+        specialinvoke this.<java.lang.Object: void <init>()>();
+        this.<Node$Innner1: Node this$0> = temp$0;
+        return;
+    }
+
+    public void <init>(Node, Node$Innner1$0)
+    {
+        Node$Innner1 this;
+        Node$Innner1$0 p0;
+        Node temp$0, temp$1;
+
+        this := @this: Node$Innner1;
+        p0 := @parameter1: Node$Innner1$0;
+        temp$0 := @parameter0: Node;
+        temp$1 := @parameter0: Node;
+        specialinvoke this.<Node$Innner1: void <init>(Node)>(temp$0);
+        this.<Node$Innner1: Node this$0> = temp$1;
+        return;
+
+        return;
+    }
+}

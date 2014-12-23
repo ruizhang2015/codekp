@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<DectectorFactory xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="DetectorConfiger.xsd">
+
+	<Category name="AutoMachine" priority="1"	packageName="edu.pku.cn.detector">
+		<Detector className="autoAdapter.DataflowAnalysisDetector" speed="fast"
+			reports="" disabled="false" hidden="true" />
+	</Category>
+</DectectorFactory>

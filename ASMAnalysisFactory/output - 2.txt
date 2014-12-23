@@ -1,0 +1,352 @@
+total:5177344max memory:66650112free memory:4413136
+D:\eclipseworkspace\CODA20110114
+use xml files to config ams
+==>org.jfree.chart.ChartUtilities::saveChartAsPNG(Ljava/io/File;Lorg/jfree/chart/JFreeChart;II)V== AutomataFileD:\eclipseworkspace\CODA20110114\AutomachineSpecs\detector_InputOutputStream_createAndClose.xml
+<== 
+
+==>org.jfree.chart.ChartUtilities::saveChartAsPNG(Ljava/io/File;Lorg/jfree/chart/JFreeChart;IILorg/jfree/chart/ChartRenderingInfo;)V== AutomataFileD:\eclipseworkspace\CODA20110114\AutomachineSpecs\detector_InputOutputStream_createAndClose.xml
+对象：O[Ljava/io/FileOutputStream;][328]
+	AutoMachine:O[Ljava/io/FileOutputStream;][328];currentState：2;endableState：false;lastLine：328.
+对象：O[Ljava/io/BufferedOutputStream;][328]
+	AutoMachine:O[Ljava/io/BufferedOutputStream;][328];currentState：3;endableState：true;lastLine：330.
+<== 
+
+==>org.jfree.chart.ChartUtilities::saveChartAsPNG(Ljava/io/File;Lorg/jfree/chart/JFreeChart;IILorg/jfree/chart/ChartRenderingInfo;ZI)V== AutomataFileD:\eclipseworkspace\CODA20110114\AutomachineSpecs\detector_InputOutputStream_createAndClose.xml
+对象：O[Ljava/io/BufferedOutputStream;][364]
+	AutoMachine:O[Ljava/io/BufferedOutputStream;][364];currentState：3;endableState：true;lastLine：368.
+对象：O[Ljava/io/FileOutputStream;][364]
+	AutoMachine:O[Ljava/io/FileOutputStream;][364];currentState：2;endableState：false;lastLine：364.
+<== 
+
+==>org.jfree.chart.ChartUtilities::writeChartAsJPEG(Ljava/io/OutputStream;Lorg/jfree/chart/JFreeChart;II)V== AutomataFileD:\eclipseworkspace\CODA20110114\AutomachineSpecs\detector_InputOutputStream_createAndClose.xml
+<== 
+
+==>org.jfree.chart.ChartUtilities::writeChartAsJPEG(Ljava/io/OutputStream;FLorg/jfree/chart/JFreeChart;II)V== AutomataFileD:\eclipseworkspace\CODA20110114\AutomachineSpecs\detector_InputOutputStream_createAndClose.xml
+<== 
+
+==>org.jfree.chart.ChartUtilities::writeChartAsJPEG(Ljava/io/OutputStream;Lorg/jfree/chart/JFreeChart;IILorg/jfree/chart/ChartRenderingInfo;)V== AutomataFileD:\eclipseworkspace\CODA20110114\AutomachineSpecs\detector_InputOutputStream_createAndClose.xml
+<== 
+
+==>org.jfree.chart.ChartUtilities::writeChartAsJPEG(Ljava/io/OutputStream;FLorg/jfree/chart/JFreeChart;IILorg/jfree/chart/ChartRenderingInfo;)V== AutomataFileD:\eclipseworkspace\CODA20110114\AutomachineSpecs\detector_InputOutputStream_createAndClose.xml
+<== 
+
+==>org.jfree.chart.ChartUtilities::saveChartAsJPEG(Ljava/io/File;Lorg/jfree/chart/JFreeChart;II)V== AutomataFileD:\eclipseworkspace\CODA20110114\AutomachineSpecs\detector_InputOutputStream_createAndClose.xml
+<== 
+
+==>org.jfree.chart.ChartUtilities::saveChartAsJPEG(Ljava/io/File;FLorg/jfree/chart/JFreeChart;II)V== AutomataFileD:\eclipseworkspace\CODA20110114\AutomachineSpecs\detector_InputOutputStream_createAndClose.xml
+<== 
+
+==>org.jfree.chart.ChartUtilities::saveChartAsJPEG(Ljava/io/File;Lorg/jfree/chart/JFreeChart;IILorg/jfree/chart/ChartRenderingInfo;)V== AutomataFileD:\eclipseworkspace\CODA20110114\AutomachineSpecs\detector_InputOutputStream_createAndClose.xml
+对象：O[Ljava/io/FileOutputStream;][547]
+	AutoMachine:O[Ljava/io/FileOutputStream;][547];currentState：2;endableState：false;lastLine：547.
+对象：O[Ljava/io/BufferedOutputStream;][547]
+	AutoMachine:O[Ljava/io/BufferedOutputStream;][547];currentState：3;endableState：true;lastLine：549.
+<== 
+
+==>org.jfree.chart.ChartUtilities::saveChartAsJPEG(Ljava/io/File;FLorg/jfree/chart/JFreeChart;IILorg/jfree/chart/ChartRenderingInfo;)V== AutomataFileD:\eclipseworkspace\CODA20110114\AutomachineSpecs\detector_InputOutputStream_createAndClose.xml
+对象：O[Ljava/io/BufferedOutputStream;][582]
+	AutoMachine:O[Ljava/io/BufferedOutputStream;][582];currentState：3;endableState：true;lastLine：584.
+对象：O[Ljava/io/FileOutputStream;][582]
+	AutoMachine:O[Ljava/io/FileOutputStream;][582];currentState：2;endableState：false;lastLine：582.
+<== 
+
+==>org.jfree.chart.ChartUtilities::writeBufferedImageAsJPEG(Ljava/io/OutputStream;Ljava/awt/image/BufferedImage;)V== AutomataFileD:\eclipseworkspace\CODA20110114\AutomachineSpecs\detector_InputOutputStream_createAndClose.xml
+<== 
+
+==>org.jfree.chart.ChartUtilities::writeBufferedImageAsJPEG(Ljava/io/OutputStream;FLjava/awt/image/BufferedImage;)V== AutomataFileD:\eclipseworkspace\CODA20110114\AutomachineSpecs\detector_InputOutputStream_createAndClose.xml
+<== 
+
+==>org.jfree.chart.ChartUtilities::writeBufferedImageAsPNG(Ljava/io/OutputStream;Ljava/awt/image/BufferedImage;)V== AutomataFileD:\eclipseworkspace\CODA20110114\AutomachineSpecs\detector_InputOutputStream_createAndClose.xml
+<== 
+
+==>org.jfree.chart.ChartUtilities::writeBufferedImageAsPNG(Ljava/io/OutputStream;Ljava/awt/image/BufferedImage;ZI)V== AutomataFileD:\eclipseworkspace\CODA20110114\AutomachineSpecs\detector_InputOutputStream_createAndClose.xml
+<== 
+
+==>org.jfree.chart.ChartUtilities::encodeAsPNG(Ljava/awt/image/BufferedImage;)[B== AutomataFileD:\eclipseworkspace\CODA20110114\AutomachineSpecs\detector_InputOutputStream_createAndClose.xml
+<== 
+
+==>org.jfree.chart.ChartUtilities::encodeAsPNG(Ljava/awt/image/BufferedImage;ZI)[B== AutomataFileD:\eclipseworkspace\CODA20110114\AutomachineSpecs\detector_InputOutputStream_createAndClose.xml
+<== 
+
+==>org.jfree.chart.ChartUtilities::writeImageMap(Ljava/io/PrintWriter;Ljava/lang/String;Lorg/jfree/chart/ChartRenderingInfo;Z)V== AutomataFileD:\eclipseworkspace\CODA20110114\AutomachineSpecs\detector_InputOutputStream_createAndClose.xml
+<== 
+
+==>org.jfree.chart.ChartUtilities::writeImageMap(Ljava/io/PrintWriter;Ljava/lang/String;Lorg/jfree/chart/ChartRenderingInfo;Lorg/jfree/chart/imagemap/ToolTipTagFragmentGenerator;Lorg/jfree/chart/imagemap/URLTagFragmentGenerator;)V== AutomataFileD:\eclipseworkspace\CODA20110114\AutomachineSpecs\detector_InputOutputStream_createAndClose.xml
+<== 
+
+==>org.jfree.chart.ChartUtilities::getImageMap(Ljava/lang/String;Lorg/jfree/chart/ChartRenderingInfo;)Ljava/lang/String;== AutomataFileD:\eclipseworkspace\CODA20110114\AutomachineSpecs\detector_InputOutputStream_createAndClose.xml
+<== 
+
+==>org.jfree.chart.ChartUtilities::getImageMap(Ljava/lang/String;Lorg/jfree/chart/ChartRenderingInfo;Lorg/jfree/chart/imagemap/ToolTipTagFragmentGenerator;Lorg/jfree/chart/imagemap/URLTagFragmentGenerator;)Ljava/lang/String;== AutomataFileD:\eclipseworkspace\CODA20110114\AutomachineSpecs\detector_InputOutputStream_createAndClose.xml
+<== 
+
+==>org.jfree.chart.LegendItemCollection::<init>()V== AutomataFileD:\eclipseworkspace\CODA20110114\AutomachineSpecs\detector_InputOutputStream_createAndClose.xml
+<== 
+
+==>org.jfree.chart.LegendItemCollection::add(Lorg/jfree/chart/LegendItem;)V== AutomataFileD:\eclipseworkspace\CODA20110114\AutomachineSpecs\detector_InputOutputStream_createAndClose.xml
+<== 
+
+==>org.jfree.chart.LegendItemCollection::addAll(Lorg/jfree/chart/LegendItemCollection;)V== AutomataFileD:\eclipseworkspace\CODA20110114\AutomachineSpecs\detector_InputOutputStream_createAndClose.xml
+<== 
+
+==>org.jfree.chart.LegendItemCollection::get(I)Lorg/jfree/chart/LegendItem;== AutomataFileD:\eclipseworkspace\CODA20110114\AutomachineSpecs\detector_InputOutputStream_createAndClose.xml
+<== 
+
+==>org.jfree.chart.LegendItemCollection::getItemCount()I== AutomataFileD:\eclipseworkspace\CODA20110114\AutomachineSpecs\detector_InputOutputStream_createAndClose.xml
+<== 
+
+==>org.jfree.chart.LegendItemCollection::iterator()Ljava/util/Iterator;== AutomataFileD:\eclipseworkspace\CODA20110114\AutomachineSpecs\detector_InputOutputStream_createAndClose.xml
+<== 
+
+==>org.jfree.chart.LegendItemCollection::equals(Ljava/lang/Object;)Z== AutomataFileD:\eclipseworkspace\CODA20110114\AutomachineSpecs\detector_InputOutputStream_createAndClose.xml
+<== 
+
+==>org.jfree.chart.LegendItemCollection::clone()Ljava/lang/Object;== AutomataFileD:\eclipseworkspace\CODA20110114\AutomachineSpecs\detector_InputOutputStream_createAndClose.xml
+<== 
+
+==>org.jfree.chart.ClipPath::<init>()V== AutomataFileD:\eclipseworkspace\CODA20110114\AutomachineSpecs\detector_InputOutputStream_createAndClose.xml
+<== 
+
+==>org.jfree.chart.ClipPath::<init>([D[D)V== AutomataFileD:\eclipseworkspace\CODA20110114\AutomachineSpecs\detector_InputOutputStream_createAndClose.xml
+<== 
+
+==>org.jfree.chart.ClipPath::<init>([D[DZZZ)V== AutomataFileD:\eclipseworkspace\CODA20110114\AutomachineSpecs\detector_InputOutputStream_createAndClose.xml
+<== 
+
+==>org.jfree.chart.ClipPath::<init>([D[DZZLjava/awt/Paint;Ljava/awt/Paint;Ljava/awt/Stroke;Ljava/awt/Composite;)V== AutomataFileD:\eclipseworkspace\CODA20110114\AutomachineSpecs\detector_InputOutputStream_createAndClose.xml
+<== 
+
+==>org.jfree.chart.ClipPath::draw(Ljava/awt/Graphics2D;Ljava/awt/geom/Rectangle2D;Lorg/jfree/chart/axis/ValueAxis;Lorg/jfree/chart/axis/ValueAxis;)Ljava/awt/geom/GeneralPath;== AutomataFileD:\eclipseworkspace\CODA20110114\AutomachineSpecs\detector_InputOutputStream_createAndClose.xml
+<== 
+
+==>org.jfree.chart.ClipPath::generateClipPath(Ljava/awt/geom/Rectangle2D;Lorg/jfree/chart/axis/ValueAxis;Lorg/jfree/chart/axis/ValueAxis;)Ljava/awt/geom/GeneralPath;== AutomataFileD:\eclipseworkspace\CODA20110114\AutomachineSpecs\detector_InputOutputStream_createAndClose.xml
+<== 
+
+==>org.jfree.chart.ClipPath::getComposite()Ljava/awt/Composite;== AutomataFileD:\eclipseworkspace\CODA20110114\AutomachineSpecs\detector_InputOutputStream_createAndClose.xml
+<== 
+
+==>org.jfree.chart.ClipPath::getDrawPaint()Ljava/awt/Paint;== AutomataFileD:\eclipseworkspace\CODA20110114\AutomachineSpecs\detector_InputOutputStream_createAndClose.xml
+<== 
+
+==>org.jfree.chart.ClipPath::isDrawPath()Z== AutomataFileD:\eclipseworkspace\CODA20110114\AutomachineSpecs\detector_InputOutputStream_createAndClose.xml
+<== 
+
+==>org.jfree.chart.ClipPath::getDrawStroke()Ljava/awt/Stroke;== AutomataFileD:\eclipseworkspace\CODA20110114\AutomachineSpecs\detector_InputOutputStream_createAndClose.xml
+<== 
+
+==>org.jfree.chart.ClipPath::getFillPaint()Ljava/awt/Paint;== AutomataFileD:\eclipseworkspace\CODA20110114\AutomachineSpecs\detector_InputOutputStream_createAndClose.xml
+<== 
+
+==>org.jfree.chart.ClipPath::isFillPath()Z== AutomataFileD:\eclipseworkspace\CODA20110114\AutomachineSpecs\detector_InputOutputStream_createAndClose.xml
+<== 
+
+==>org.jfree.chart.ClipPath::getXValue()[D== AutomataFileD:\eclipseworkspace\CODA20110114\AutomachineSpecs\detector_InputOutputStream_createAndClose.xml
+<== 
+
+==>org.jfree.chart.ClipPath::getYValue()[D== AutomataFileD:\eclipseworkspace\CODA20110114\AutomachineSpecs\detector_InputOutputStream_createAndClose.xml
+<== 
+
+==>org.jfree.chart.ClipPath::setComposite(Ljava/awt/Composite;)V== AutomataFileD:\eclipseworkspace\CODA20110114\AutomachineSpecs\detector_InputOutputStream_createAndClose.xml
+<== 
+
+==>org.jfree.chart.ClipPath::setDrawPaint(Ljava/awt/Paint;)V== AutomataFileD:\eclipseworkspace\CODA20110114\AutomachineSpecs\detector_InputOutputStream_createAndClose.xml
+<== 
+
+==>org.jfree.chart.ClipPath::setDrawPath(Z)V== AutomataFileD:\eclipseworkspace\CODA20110114\AutomachineSpecs\detector_InputOutputStream_createAndClose.xml
+<== 
+
+==>org.jfree.chart.ClipPath::setDrawStroke(Ljava/awt/Stroke;)V== AutomataFileD:\eclipseworkspace\CODA20110114\AutomachineSpecs\detector_InputOutputStream_createAndClose.xml
+<== 
+
+==>org.jfree.chart.ClipPath::setFillPaint(Ljava/awt/Paint;)V== AutomataFileD:\eclipseworkspace\CODA20110114\AutomachineSpecs\detector_InputOutputStream_createAndClose.xml
+<== 
+
+==>org.jfree.chart.ClipPath::setFillPath(Z)V== AutomataFileD:\eclipseworkspace\CODA20110114\AutomachineSpecs\detector_InputOutputStream_createAndClose.xml
+<== 
+
+==>org.jfree.chart.ClipPath::setXValue([D)V== AutomataFileD:\eclipseworkspace\CODA20110114\AutomachineSpecs\detector_InputOutputStream_createAndClose.xml
+<== 
+
+==>org.jfree.chart.ClipPath::setYValue([D)V== AutomataFileD:\eclipseworkspace\CODA20110114\AutomachineSpecs\detector_InputOutputStream_createAndClose.xml
+<== 
+
+==>org.jfree.chart.ClipPath::isClip()Z== AutomataFileD:\eclipseworkspace\CODA20110114\AutomachineSpecs\detector_InputOutputStream_createAndClose.xml
+<== 
+
+==>org.jfree.chart.ClipPath::setClip(Z)V== AutomataFileD:\eclipseworkspace\CODA20110114\AutomachineSpecs\detector_InputOutputStream_createAndClose.xml
+<== 
+
+==>org.jfree.chart.ClipPath::clone()Ljava/lang/Object;== AutomataFileD:\eclipseworkspace\CODA20110114\AutomachineSpecs\detector_InputOutputStream_createAndClose.xml
+<== 
+
+==>org.jfree.chart.JFreeChart::<init>(Lorg/jfree/chart/plot/Plot;)V== AutomataFileD:\eclipseworkspace\CODA20110114\AutomachineSpecs\detector_InputOutputStream_createAndClose.xml
+<== 
+
+==>org.jfree.chart.JFreeChart::<init>(Ljava/lang/String;Lorg/jfree/chart/plot/Plot;)V== AutomataFileD:\eclipseworkspace\CODA20110114\AutomachineSpecs\detector_InputOutputStream_createAndClose.xml
+<== 
+
+==>org.jfree.chart.JFreeChart::<init>(Ljava/lang/String;Ljava/awt/Font;Lorg/jfree/chart/plot/Plot;Z)V== AutomataFileD:\eclipseworkspace\CODA20110114\AutomachineSpecs\detector_InputOutputStream_createAndClose.xml
+<== 
+
+==>org.jfree.chart.JFreeChart::getRenderingHints()Ljava/awt/RenderingHints;== AutomataFileD:\eclipseworkspace\CODA20110114\AutomachineSpecs\detector_InputOutputStream_createAndClose.xml
+<== 
+
+==>org.jfree.chart.JFreeChart::setRenderingHints(Ljava/awt/RenderingHints;)V== AutomataFileD:\eclipseworkspace\CODA20110114\AutomachineSpecs\detector_InputOutputStream_createAndClose.xml
+<== 
+
+==>org.jfree.chart.JFreeChart::isBorderVisible()Z== AutomataFileD:\eclipseworkspace\CODA20110114\AutomachineSpecs\detector_InputOutputStream_createAndClose.xml
+<== 
+
+==>org.jfree.chart.JFreeChart::setBorderVisible(Z)V== AutomataFileD:\eclipseworkspace\CODA20110114\AutomachineSpecs\detector_InputOutputStream_createAndClose.xml
+<== 
+
+==>org.jfree.chart.JFreeChart::getBorderStroke()Ljava/awt/Stroke;== AutomataFileD:\eclipseworkspace\CODA20110114\AutomachineSpecs\detector_InputOutputStream_createAndClose.xml
+<== 
+
+==>org.jfree.chart.JFreeChart::setBorderStroke(Ljava/awt/Stroke;)V== AutomataFileD:\eclipseworkspace\CODA20110114\AutomachineSpecs\detector_InputOutputStream_createAndClose.xml
+<== 
+
+==>org.jfree.chart.JFreeChart::getBorderPaint()Ljava/awt/Paint;== AutomataFileD:\eclipseworkspace\CODA20110114\AutomachineSpecs\detector_InputOutputStream_createAndClose.xml
+<== 
+
+==>org.jfree.chart.JFreeChart::setBorderPaint(Ljava/awt/Paint;)V== AutomataFileD:\eclipseworkspace\CODA20110114\AutomachineSpecs\detector_InputOutputStream_createAndClose.xml
+<== 
+
+==>org.jfree.chart.JFreeChart::getPadding()Lorg/jfree/ui/RectangleInsets;== AutomataFileD:\eclipseworkspace\CODA20110114\AutomachineSpecs\detector_InputOutputStream_createAndClose.xml
+<== 
+
+==>org.jfree.chart.JFreeChart::setPadding(Lorg/jfree/ui/RectangleInsets;)V== AutomataFileD:\eclipseworkspace\CODA20110114\AutomachineSpecs\detector_InputOutputStream_createAndClose.xml
+<== 
+
+==>org.jfree.chart.JFreeChart::getTitle()Lorg/jfree/chart/title/TextTitle;== AutomataFileD:\eclipseworkspace\CODA20110114\AutomachineSpecs\detector_InputOutputStream_createAndClose.xml
+<== 
+
+==>org.jfree.chart.JFreeChart::setTitle(Lorg/jfree/chart/title/TextTitle;)V== AutomataFileD:\eclipseworkspace\CODA20110114\AutomachineSpecs\detector_InputOutputStream_createAndClose.xml
+<== 
+
+==>org.jfree.chart.JFreeChart::setTitle(Ljava/lang/String;)V== AutomataFileD:\eclipseworkspace\CODA20110114\AutomachineSpecs\detector_InputOutputStream_createAndClose.xml
+<== 
+
+==>org.jfree.chart.JFreeChart::addLegend(Lorg/jfree/chart/title/LegendTitle;)V== AutomataFileD:\eclipseworkspace\CODA20110114\AutomachineSpecs\detector_InputOutputStream_createAndClose.xml
+<== 
+
+==>org.jfree.chart.JFreeChart::getLegend()Lorg/jfree/chart/title/LegendTitle;== AutomataFileD:\eclipseworkspace\CODA20110114\AutomachineSpecs\detector_InputOutputStream_createAndClose.xml
+<== 
+
+==>org.jfree.chart.JFreeChart::getLegend(I)Lorg/jfree/chart/title/LegendTitle;== AutomataFileD:\eclipseworkspace\CODA20110114\AutomachineSpecs\detector_InputOutputStream_createAndClose.xml
+<== 
+
+==>org.jfree.chart.JFreeChart::removeLegend()V== AutomataFileD:\eclipseworkspace\CODA20110114\AutomachineSpecs\detector_InputOutputStream_createAndClose.xml
+this block start stmt:21 end stmt:24
+this block start stmt:21 end stmt:24
+this block start stmt:21 end stmt:24
+this block start stmt:21 end stmt:24
+this block start stmt:21 end stmt:24
+this block start stmt:21 end stmt:24
+this block start stmt:21 end stmt:24
+this block start stmt:21 end stmt:24
+this block start stmt:21 end stmt:24
+this block start stmt:21 end stmt:24
+this block start stmt:21 end stmt:24
+this block start stmt:21 end stmt:24
+this block start stmt:21 end stmt:24
+this block start stmt:21 end stmt:24
+this block start stmt:21 end stmt:24
+this block start stmt:21 end stmt:24
+this block start stmt:21 end stmt:24
+this block start stmt:21 end stmt:24
+this block start stmt:21 end stmt:24
+this block start stmt:21 end stmt:24
+this block start stmt:21 end stmt:24
+this block start stmt:21 end stmt:24
+this block start stmt:21 end stmt:24
+this block start stmt:21 end stmt:24
+this block start stmt:21 end stmt:24
+this block start stmt:21 end stmt:24
+this block start stmt:21 end stmt:24
+this block start stmt:21 end stmt:24
+this block start stmt:21 end stmt:24
+this block start stmt:21 end stmt:24
+this block start stmt:21 end stmt:24
+this block start stmt:21 end stmt:24
+this block start stmt:21 end stmt:24
+this block start stmt:21 end stmt:24
+this block start stmt:21 end stmt:24
+this block start stmt:21 end stmt:24
+this block start stmt:21 end stmt:24
+this block start stmt:21 end stmt:24
+this block start stmt:21 end stmt:24
+this block start stmt:21 end stmt:24
+<== 
+
+==>org.jfree.chart.JFreeChart::getSubtitles()Ljava/util/List;== AutomataFileD:\eclipseworkspace\CODA20110114\AutomachineSpecs\detector_InputOutputStream_createAndClose.xml
+<== 
+
+==>org.jfree.chart.JFreeChart::setSubtitles(Ljava/util/List;)V== AutomataFileD:\eclipseworkspace\CODA20110114\AutomachineSpecs\detector_InputOutputStream_createAndClose.xml
+<== 
+
+==>org.jfree.chart.JFreeChart::getSubtitleCount()I== AutomataFileD:\eclipseworkspace\CODA20110114\AutomachineSpecs\detector_InputOutputStream_createAndClose.xml
+<== 
+
+==>org.jfree.chart.JFreeChart::getSubtitle(I)Lorg/jfree/chart/title/Title;== AutomataFileD:\eclipseworkspace\CODA20110114\AutomachineSpecs\detector_InputOutputStream_createAndClose.xml
+<== 
+
+==>org.jfree.chart.JFreeChart::addSubtitle(Lorg/jfree/chart/title/Title;)V== AutomataFileD:\eclipseworkspace\CODA20110114\AutomachineSpecs\detector_InputOutputStream_createAndClose.xml
+<== 
+
+==>org.jfree.chart.JFreeChart::clearSubtitles()V== AutomataFileD:\eclipseworkspace\CODA20110114\AutomachineSpecs\detector_InputOutputStream_createAndClose.xml
+<== 
+
+==>org.jfree.chart.JFreeChart::removeSubtitle(Lorg/jfree/chart/title/Title;)V== AutomataFileD:\eclipseworkspace\CODA20110114\AutomachineSpecs\detector_InputOutputStream_createAndClose.xml
+<== 
+
+==>org.jfree.chart.JFreeChart::getPlot()Lorg/jfree/chart/plot/Plot;== AutomataFileD:\eclipseworkspace\CODA20110114\AutomachineSpecs\detector_InputOutputStream_createAndClose.xml
+<== 
+
+==>org.jfree.chart.JFreeChart::getCategoryPlot()Lorg/jfree/chart/plot/CategoryPlot;== AutomataFileD:\eclipseworkspace\CODA20110114\AutomachineSpecs\detector_InputOutputStream_createAndClose.xml
+<== 
+
+==>org.jfree.chart.JFreeChart::getXYPlot()Lorg/jfree/chart/plot/XYPlot;== AutomataFileD:\eclipseworkspace\CODA20110114\AutomachineSpecs\detector_InputOutputStream_createAndClose.xml
+<== 
+
+==>org.jfree.chart.JFreeChart::getAntiAlias()Z== AutomataFileD:\eclipseworkspace\CODA20110114\AutomachineSpecs\detector_InputOutputStream_createAndClose.xml
+<== 
+
+==>org.jfree.chart.JFreeChart::setAntiAlias(Z)V== AutomataFileD:\eclipseworkspace\CODA20110114\AutomachineSpecs\detector_InputOutputStream_createAndClose.xml
+<== 
+
+==>org.jfree.chart.JFreeChart::getBackgroundPaint()Ljava/awt/Paint;== AutomataFileD:\eclipseworkspace\CODA20110114\AutomachineSpecs\detector_InputOutputStream_createAndClose.xml
+<== 
+
+==>org.jfree.chart.JFreeChart::setBackgroundPaint(Ljava/awt/Paint;)V== AutomataFileD:\eclipseworkspace\CODA20110114\AutomachineSpecs\detector_InputOutputStream_createAndClose.xml
+<== 
+
+==>org.jfree.chart.JFreeChart::getBackgroundImage()Ljava/awt/Image;== AutomataFileD:\eclipseworkspace\CODA20110114\AutomachineSpecs\detector_InputOutputStream_createAndClose.xml
+<== 
+
+==>org.jfree.chart.JFreeChart::setBackgroundImage(Ljava/awt/Image;)V== AutomataFileD:\eclipseworkspace\CODA20110114\AutomachineSpecs\detector_InputOutputStream_createAndClose.xml
+<== 
+
+==>org.jfree.chart.JFreeChart::getBackgroundImageAlignment()I== AutomataFileD:\eclipseworkspace\CODA20110114\AutomachineSpecs\detector_InputOutputStream_createAndClose.xml
+<== 
+
+==>org.jfree.chart.JFreeChart::setBackgroundImageAlignment(I)V== AutomataFileD:\eclipseworkspace\CODA20110114\AutomachineSpecs\detector_InputOutputStream_createAndClose.xml
+<== 
+
+==>org.jfree.chart.JFreeChart::getBackgroundImageAlpha()F== AutomataFileD:\eclipseworkspace\CODA20110114\AutomachineSpecs\detector_InputOutputStream_createAndClose.xml
+<== 
+
+==>org.jfree.chart.JFreeChart::setBackgroundImageAlpha(F)V== AutomataFileD:\eclipseworkspace\CODA20110114\AutomachineSpecs\detector_InputOutputStream_createAndClose.xml
+<== 
+
+==>org.jfree.chart.JFreeChart::isNotify()Z== AutomataFileD:\eclipseworkspace\CODA20110114\AutomachineSpecs\detector_InputOutputStream_createAndClose.xml
+<== 
+
+==>org.jfree.chart.JFreeChart::setNotify(Z)V== AutomataFileD:\eclipseworkspace\CODA20110114\AutomachineSpecs\detector_InputOutputStream_createAndClose.xml
+<== 
+
+==>org.jfree.chart.JFreeChart::draw(Ljava/awt/Graphics2D;Ljava/awt/geom/Rectangle2D;)V== AutomataFileD:\eclipseworkspace\CODA20110114\AutomachineSpecs\detector_InputOutputStream_createAndClose.xml
+AutoMachine takes time:61214ms
+total bug detected:0
+total:66650112max memory:66650112free memory:45474696
+Space used:41108936byte

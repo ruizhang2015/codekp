@@ -1,0 +1,65 @@
+		<Category name="Normal" priority="1"
+		packageName="edu.pku.cn.detector">
+		
+		<Detector className="edu.pku.cn.detector.FindCastInMethodArgument" 
+			speed="fast" reports="" disabled="false" hidden="false" /> 
+
+		<Detector className="edu.pku.cn.detector.FindFloatMatch"
+			speed="fast" reports="" disabled="true" hidden="false" />
+
+		<Detector className="edu.pku.cn.detector.FindInvalidValueInMethodArgument"
+			speed="fast" reports="" disabled="true" hidden="false" />
+
+		<Detector className="edu.pku.cn.detector.FindInvalidTypeInMethodArgument"
+			speed="fast" reports="" disabled="true" hidden="false" />
+
+		<Detector className="edu.pku.cn.detector.FindVacuousComputation"
+			speed="fast" reports="" disabled="true" hidden="false" />
+
+		<Detector className="edu.pku.cn.detector.FindNoSuperCall"
+			speed="fast" reports="" disabled="false" hidden="false" />
+
+		<Detector className="edu.pku.cn.detector.FindImproperMethodCall"
+			speed="fast" reports="" disabled="true" hidden="false" />
+			
+					<Detector
+			className="edu.pku.cn.detector.FindImplClassNoDefOrUseMethod"
+			speed="fast" reports="" disabled="false" hidden="false" />
+	</Category>
+
+	<Category name="Idiom" priority="1"
+		packageName="edu.pku.cn.detector.idiom">
+		
+
+		<Detector
+			className="edu.pku.cn.detector.idiom.FindWeakLoopController"
+			speed="fast" reports="" disabled="true" hidden="false" />
+	</Category>
+
+	<Category name="Analysis" priority="2"
+		packageName="edu.pku.cn.detector.analysis">
+		<!--
+			<Detector className="edu.pku.cn.detector.analysis.LiveStoreDetector" 
+			speed="fast"
+			reports=""
+			disabled="false"
+			hidden="true" /> 		
+		-->
+		<Detector className = "edu.pku.cn.detector.analysis.FindMayNullDeref"
+			speed = "slow" reports = "" disabled = "true" hidden = "false" />
+				
+		<Detector className = "edu.pku.cn.detector.analysis.FindNullDeref"
+			speed = "slow" reports = "" disabled = "true" hidden = "false" />
+		
+		<Detector className="edu.pku.cn.detector.analysis.FindWaitOrNotifyWithoutLock"
+			speed="slow" reports="" disabled="true" hidden="false" />
+
+		<Detector className="edu.pku.cn.detector.analysis.FindSleepWithLockHeld"
+			speed="slow" reports="" disabled="true" hidden="false" />
+
+		<Detector className="edu.pku.cn.detector.analysis.FindUnusedDef"
+			speed="slow" reports="" disabled="true" hidden="false" />
+		
+		<Detector className="edu.pku.cn.detector.analysis.FindWaitOrNotifyWithMultiLocksHeld"
+			speed="slow" reports="" disabled="true" hidden="false" />
+	</Category>

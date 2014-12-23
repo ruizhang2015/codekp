@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Automachine  >
+<!--   xmlns="http://mass.pku.edu.cn" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://mass.pku.edu.cn automachine.xsd" --> 
+	<description>Call Random.nextDouble()/Math.random(), then use d2i.</description>
+	<errorMessage>Call Random.nextDouble()/Math.random(), then use d2i.</errorMessage>
+	<endMeanViolateDefect>true</endMeanViolateDefect>
+	<objectSensitive>false</objectSensitive>
+	<onlyConcernClass></onlyConcernClass>
+	<allOpcodePushOjectAutomachine>false</allOpcodePushOjectAutomachine>	
+	<severeLevel>0</severeLevel>
+	<state>
+		<number>1</number>
+		<isEndState>false</isEndState>
+		<isOriginState>true</isOriginState>
+		<exceptionState>1</exceptionState>		
+		    <edge>
+				<class>VisitMethodInsnEdge</class>
+				<toState>2</toState>
+				<opcode>INVOKEVIRTUAL</opcode>
+				<owner>java/util/Random</owner>
+				<name>nextDouble</name>
+				<desc>()D</desc>
+			</edge>
+		
+		    <edge>
+				<class>VisitMethodInsnEdge</class>
+				<toState>2</toState>
+				<opcode>INVOKESTATIC</opcode>
+				<owner>java/lang/Math</owner>
+				<name>random</name>
+				<desc>()D</desc>
+			</edge>					
+	</state>
+	
+	<state>
+		<number>2</number>
+		<isEndState>false</isEndState>
+		<isOriginState>false</isOriginState>
+		<exceptionState>1</exceptionState>
+		
+	  	    <edge>
+				<class>VisitInsnEdge</class>
+				<toState>3</toState>
+				<opcode>d2i</opcode>				
+			</edge>		
+	</state>
+	
+	<state>
+		<number>3</number>		
+		<isEndState>true</isEndState>
+		<isOriginState>false</isOriginState>
+		<exceptionState>3</exceptionState>
+	</state>	
+</Automachine>

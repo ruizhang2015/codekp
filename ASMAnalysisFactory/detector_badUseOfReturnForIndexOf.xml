@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Automachine  >
+<!--   xmlns="http://mass.pku.edu.cn" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://mass.pku.edu.cn automachine.xsd" --> 
+	<description>use IFLE/IFGT after calling java.lang.String.indexOf()</description>
+	<errorMessage>use IFLE/IFGT after calling java.lang.String.indexOf()</errorMessage>
+	<endMeanViolateDefect>true</endMeanViolateDefect>
+	<objectSensitive>false</objectSensitive>
+	<onlyConcernClass></onlyConcernClass>
+	<allOpcodePushOjectAutomachine>false</allOpcodePushOjectAutomachine>	
+	<severeLevel>0</severeLevel>
+	<state>
+		<number>1</number>
+		<isEndState>false</isEndState>
+		<isOriginState>true</isOriginState>
+		<exceptionState>1</exceptionState>		
+		<edge>
+			<class>VisitMethodInsnEdge</class>
+			<toState>2</toState>
+			<opcode>INVOKEVIRTUAL</opcode>
+			<owner>java/lang/String</owner>
+			<name>indexOf</name>
+			<desc>(Ljava/lang/String;)I</desc>
+		</edge>			
+	</state>
+	
+	<state>
+		<number>2</number>
+		<isEndState>false</isEndState>
+		<isOriginState>false</isOriginState>
+		<exceptionState>1</exceptionState>	
+		<edge>
+			<class>VisitJumpInsnEdge</class>
+			<toState>3</toState>
+			<opcode>IFLE</opcode>			
+		</edge>
+		<edge>
+			<class>VisitJumpInsnEdge</class>
+			<toState>3</toState>
+			<opcode>IFGT</opcode>		
+		</edge>	
+	</state>
+	
+	<state>
+		<number>3</number>		
+		<isEndState>true</isEndState>
+		<isOriginState>false</isOriginState>
+		<exceptionState>3</exceptionState>
+	</state>	
+</Automachine>

@@ -1,5 +1,7 @@
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -27,7 +29,15 @@ public class ERMSimulator {
 		
 	}
 	
-	public void relocation(List<App> active, List<App> inactive, int lid){
+	public void findCondidate(List<App> active, List<App> inactive){
+		active.add(new App(0, 0, 2, 50, 100));
+		for(Iterator<App> it = Apps.iterator(); it.hasNext(); it.next()){
+			 
+		}
+		
+	}
+	
+	public void relocation(List<App> active, List<App> inactive, int least_sid){
 		
 	}
 	
@@ -37,6 +47,10 @@ public class ERMSimulator {
 	
 	public static void main(String[] args) {
 		ERMSimulator simulator = new ERMSimulator(220);
+		List<App> active = new ArrayList<App>();
+		List<App> inactive = new ArrayList<App>();
+		simulator.findCondidate(active, inactive);
+		System.out.println(active.get(0).appid);
 		/*Server server = new Server(1);
 		simulator.staticpool.put(0, server);
 		server.id = 2;

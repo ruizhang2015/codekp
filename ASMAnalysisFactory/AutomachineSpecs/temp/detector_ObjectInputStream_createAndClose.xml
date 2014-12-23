@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Automachine  > 
+	<description>create a Resource and not close it</description>
+	<errorMessage>创建一个 {0} 最后一次要调用 close</errorMessage>
+	<endMeanViolateDefect>false</endMeanViolateDefect>
+	<objectSensitive>true</objectSensitive>
+	<onlyConcernClass>java.io.InputStream;java.io.OutputStream;java.io.Reader;java.io.Writer;javax.jms.MessageConsumer;javax.jms.MessageProducer;javax.xml.registry.Connection;javax.xml.stream.XMLStreamWriter;javax.xml.stream.XMLEventWriter;javax.sql.PooledConnection;javax.jms.Session;javax.resource.cci.Interaction</onlyConcernClass>
+	<allOpcodePushOjectAutomachine>false</allOpcodePushOjectAutomachine>	
+	<severeLevel>0</severeLevel>
+	<state>
+		<number>1</number>
+		<isEndState>false</isEndState>
+		<isOriginState>true</isOriginState>
+		<exceptionState>1</exceptionState>
+		<edge>
+				<class>VisitMethodInsnEdge</class>
+				<toState>2</toState>
+				<opcode>invokespecial</opcode>
+				<owner>java.io.InputStream</owner>
+				<name>&lt;init&gt;</name>
+				<desc>true</desc>
+			</edge>	
+		<!--<edge>
+				<class>VisitMethodInsnEdge</class>
+				<toState>3</toState>
+				<opcode>invokevirtual</opcode>
+				<owner>java.io.InputStream</owner>
+				<name>close</name>
+				<desc>()V</desc>
+			</edge>		-->
+	</state>
+	
+	<state>
+		<number>2</number>
+		<isEndState>false</isEndState>
+		<isOriginState>false</isOriginState>
+		<exceptionState>2</exceptionState>
+		
+			<edge>
+				<class>VisitMethodInsnEdge</class>
+				<toState>3</toState>
+				<opcode>invokevirtual</opcode>
+				<owner>java.io.InputStream</owner>
+				<name>close</name>
+				<desc>()V</desc>
+			</edge>		
+	</state>
+	
+	<state>
+		<number>3</number>		
+		<isEndState>true</isEndState>
+		<isOriginState>false</isOriginState>
+		<exceptionState>3</exceptionState>
+			<edge>
+					<class>VisitMethodInsnEdge</class>
+					<toState>3</toState>
+					<opcode>invokeinterface</opcode>
+					<owner>java.io.InputStream</owner>
+					<name>close</name>
+					<desc>()V</desc>
+			</edge>
+			<!--  <edge>
+					<class>VisitMethodInsnEdge</class>
+					<toState>4</toState>
+					<opcode>invokeinterface</opcode>
+					<owner>java.io.InputStream</owner>
+					<name>true</name>
+					<desc>true</desc>
+			</edge>-->
+	</state>
+<!-- 			<state>
+		<number>4</number>		
+		<isEndState>false</isEndState>
+		<isOriginState>false</isOriginState>
+		<exceptionState>4</exceptionState>
+	</state>	
+ -->
+
+</Automachine>

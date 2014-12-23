@@ -1,0 +1,298 @@
+public class Parent extends ParentBase
+{
+    int i;
+    int j;
+
+    public void <init>()
+    {
+        Parent this;
+        int temp$0, temp$1, temp$3;
+        java.io.PrintStream temp$2;
+
+        this := @this: Parent;
+        specialinvoke this.<ParentBase: void <init>()>();
+        temp$0 = -1;
+        this.<Parent: int i> = temp$0;
+        temp$1 = 4;
+        this.<Parent: int j> = temp$1;
+        temp$2 = <java.lang.System: java.io.PrintStream out>;
+        temp$3 = this.<Parent: int i>;
+        virtualinvoke temp$2.<java.io.PrintStream: void println(int)>(temp$3);
+        return;
+    }
+
+    public void test()
+    {
+        Parent this;
+        java.lang.Object temp$0, temp$1, temp$5;
+        java.lang.String s, temp$2, temp$6, temp$7;
+        java.io.PrintStream temp$3;
+        java.lang.StringBuffer temp$4;
+
+        this := @this: Parent;
+        temp$0 = new java.lang.Object;
+        specialinvoke temp$0.<java.lang.Object: void <init>()>();
+        this.<Parent: java.lang.Object ob> = temp$0;
+        temp$1 = this.<Parent: java.lang.Object ob>;
+        temp$2 = virtualinvoke temp$1.<java.lang.Object: java.lang.String toString()>();
+        s = temp$2;
+        temp$3 = <java.lang.System: java.io.PrintStream out>;
+        temp$4 = new java.lang.StringBuffer;
+        specialinvoke temp$4.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$4.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(s);
+        temp$5 = <Parent: java.lang.Object os>;
+        temp$6 = virtualinvoke temp$5.<java.lang.Object: java.lang.String toString()>();
+        virtualinvoke temp$4.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(temp$6);
+        temp$7 = virtualinvoke temp$4.<java.lang.StringBuffer: java.lang.String toString()>();
+        virtualinvoke temp$3.<java.io.PrintStream: void println(java.lang.String)>(temp$7);
+        return;
+    }
+
+    public static void main(java.lang.String[])
+    {
+        java.lang.String[] args, temp$10, temp$14, temp$19, temp$25, temp$29, temp$34, temp$40, temp$44, temp$49;
+        ParentBase pb;
+        Parent temp$0, pb, temp$7, pb, temp$8, pb, temp$22, pb, temp$23, pb, temp$38;
+        java.io.PrintStream temp$1, temp$9, temp$13, temp$18, temp$24, temp$28, temp$33, temp$39, temp$43, temp$48;
+        java.lang.StringBuffer temp$2;
+        int temp$3, temp$11, temp$15, temp$20, temp$26, temp$30, temp$35, temp$41, temp$45, temp$50;
+        java.lang.Object temp$4;
+        java.lang.String temp$5, temp$6, temp$12, temp$16, temp$21, temp$27, temp$31, temp$36, temp$42, temp$46, temp$51;
+        java.lang.Exception e, ee, e, e, ee, e, ee;
+        java.lang.Throwable temp$17, temp$32, temp$37, temp$47;
+
+        args := @parameter0: java.lang.String[];
+        temp$0 = new Parent;
+        specialinvoke temp$0.<Parent: void <init>()>();
+        pb = temp$0;
+        temp$1 = <java.lang.System: java.io.PrintStream out>;
+        temp$2 = new java.lang.StringBuffer;
+        specialinvoke temp$2.<java.lang.StringBuffer: void <init>()>();
+        temp$3 = pb.<ParentBase: int i>;
+        virtualinvoke temp$2.<java.lang.StringBuffer: java.lang.StringBuffer append(int)>(temp$3);
+        temp$4 = <Parent: java.lang.Object os>;
+        temp$5 = virtualinvoke temp$4.<java.lang.Object: java.lang.String toString()>();
+        virtualinvoke temp$2.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(temp$5);
+        temp$6 = virtualinvoke temp$2.<java.lang.StringBuffer: java.lang.String toString()>();
+        virtualinvoke temp$1.<java.io.PrintStream: void println(java.lang.String)>(temp$6);
+
+     label0:
+        nop;
+        temp$7 = new Parent;
+        specialinvoke temp$7.<Parent: void <init>()>();
+        pb = temp$7;
+        virtualinvoke pb.<Parent: void test()>();
+
+     label1:
+        nop;
+
+     label2:
+        nop;
+        temp$8 = new Parent;
+        specialinvoke temp$8.<Parent: void <init>()>();
+        pb = temp$8;
+        virtualinvoke pb.<Parent: void test()>();
+
+     label3:
+        nop;
+        temp$9 = <java.lang.System: java.io.PrintStream out>;
+        temp$10 = args;
+        temp$11 = 0;
+        temp$12 = temp$10[temp$11];
+        virtualinvoke temp$9.<java.io.PrintStream: void println(java.lang.String)>(temp$12);
+        goto label10;
+
+     label4:
+        nop;
+        e := @caughtexception;
+
+     label5:
+        nop;
+        virtualinvoke e.<java.lang.Exception: void printStackTrace()>();
+        goto label7;
+
+     label6:
+        nop;
+        ee := @caughtexception;
+        virtualinvoke ee.<java.lang.Exception: void printStackTrace()>();
+        nop;
+        goto label7;
+
+     label7:
+        nop;
+
+     label8:
+        nop;
+        temp$13 = <java.lang.System: java.io.PrintStream out>;
+        temp$14 = args;
+        temp$15 = 0;
+        temp$16 = temp$14[temp$15];
+        virtualinvoke temp$13.<java.io.PrintStream: void println(java.lang.String)>(temp$16);
+        goto label10;
+
+     label9:
+        nop;
+        temp$17 := @caughtexception;
+        temp$18 = <java.lang.System: java.io.PrintStream out>;
+        temp$19 = args;
+        temp$20 = 0;
+        temp$21 = temp$19[temp$20];
+        virtualinvoke temp$18.<java.io.PrintStream: void println(java.lang.String)>(temp$21);
+        throw temp$17;
+
+     label10:
+        nop;
+        goto label32;
+
+     label11:
+        nop;
+        e := @caughtexception;
+        temp$22 = new Parent;
+        specialinvoke temp$22.<Parent: void <init>()>();
+        pb = temp$22;
+        virtualinvoke pb.<Parent: void test()>();
+
+     label12:
+        nop;
+
+     label13:
+        nop;
+        temp$23 = new Parent;
+        specialinvoke temp$23.<Parent: void <init>()>();
+        pb = temp$23;
+        virtualinvoke pb.<Parent: void test()>();
+
+     label14:
+        nop;
+        temp$24 = <java.lang.System: java.io.PrintStream out>;
+        temp$25 = args;
+        temp$26 = 0;
+        temp$27 = temp$25[temp$26];
+        virtualinvoke temp$24.<java.io.PrintStream: void println(java.lang.String)>(temp$27);
+        goto label21;
+
+     label15:
+        nop;
+        e := @caughtexception;
+
+     label16:
+        nop;
+        virtualinvoke e.<java.lang.Exception: void printStackTrace()>();
+        goto label18;
+
+     label17:
+        nop;
+        ee := @caughtexception;
+        virtualinvoke ee.<java.lang.Exception: void printStackTrace()>();
+        nop;
+        goto label18;
+
+     label18:
+        nop;
+
+     label19:
+        nop;
+        temp$28 = <java.lang.System: java.io.PrintStream out>;
+        temp$29 = args;
+        temp$30 = 0;
+        temp$31 = temp$29[temp$30];
+        virtualinvoke temp$28.<java.io.PrintStream: void println(java.lang.String)>(temp$31);
+        goto label21;
+
+     label20:
+        nop;
+        temp$32 := @caughtexception;
+        temp$33 = <java.lang.System: java.io.PrintStream out>;
+        temp$34 = args;
+        temp$35 = 0;
+        temp$36 = temp$34[temp$35];
+        virtualinvoke temp$33.<java.io.PrintStream: void println(java.lang.String)>(temp$36);
+        throw temp$32;
+
+     label21:
+        nop;
+        goto label32;
+
+     label22:
+        nop;
+        temp$37 := @caughtexception;
+
+     label23:
+        nop;
+        temp$38 = new Parent;
+        specialinvoke temp$38.<Parent: void <init>()>();
+        pb = temp$38;
+        virtualinvoke pb.<Parent: void test()>();
+
+     label24:
+        nop;
+        temp$39 = <java.lang.System: java.io.PrintStream out>;
+        temp$40 = args;
+        temp$41 = 0;
+        temp$42 = temp$40[temp$41];
+        virtualinvoke temp$39.<java.io.PrintStream: void println(java.lang.String)>(temp$42);
+        goto label31;
+
+     label25:
+        nop;
+        e := @caughtexception;
+
+     label26:
+        nop;
+        virtualinvoke e.<java.lang.Exception: void printStackTrace()>();
+        goto label28;
+
+     label27:
+        nop;
+        ee := @caughtexception;
+        virtualinvoke ee.<java.lang.Exception: void printStackTrace()>();
+        nop;
+        goto label28;
+
+     label28:
+        nop;
+
+     label29:
+        nop;
+        temp$43 = <java.lang.System: java.io.PrintStream out>;
+        temp$44 = args;
+        temp$45 = 0;
+        temp$46 = temp$44[temp$45];
+        virtualinvoke temp$43.<java.io.PrintStream: void println(java.lang.String)>(temp$46);
+        goto label31;
+
+     label30:
+        nop;
+        temp$47 := @caughtexception;
+        temp$48 = <java.lang.System: java.io.PrintStream out>;
+        temp$49 = args;
+        temp$50 = 0;
+        temp$51 = temp$49[temp$50];
+        virtualinvoke temp$48.<java.io.PrintStream: void println(java.lang.String)>(temp$51);
+        throw temp$47;
+
+     label31:
+        nop;
+        throw temp$37;
+
+     label32:
+        nop;
+        return;
+
+        catch java.lang.Exception from label5 to label6 with label6;
+        catch java.lang.Exception from label2 to label3 with label4;
+        catch java.lang.Throwable from label2 to label3 with label9;
+        catch java.lang.Throwable from label3 to label8 with label9;
+        catch java.lang.Exception from label16 to label17 with label17;
+        catch java.lang.Exception from label13 to label14 with label15;
+        catch java.lang.Throwable from label13 to label14 with label20;
+        catch java.lang.Throwable from label14 to label19 with label20;
+        catch java.lang.Exception from label26 to label27 with label27;
+        catch java.lang.Exception from label23 to label24 with label25;
+        catch java.lang.Throwable from label23 to label24 with label30;
+        catch java.lang.Throwable from label24 to label29 with label30;
+        catch java.lang.Exception from label0 to label1 with label11;
+        catch java.lang.Throwable from label0 to label1 with label22;
+        catch java.lang.Throwable from label1 to label12 with label22;
+    }
+}

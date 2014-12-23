@@ -1,0 +1,711 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MessageCollection>
+	<BugCategory category="Normal" abbreviation="N">
+		<Description>Normal</Description>
+		<Details>
+			Probable bug - an apparent coding mistake resulting in code
+			that was probably not what the developer intended. We strive
+			for a low false positive rate.
+		</Details>
+		<Detector
+			className="edu.pku.cn.detector.FindCastInMethodArgument">
+			<Details>
+				<![CDATA[
+<p> This detector looks for a field that is synchronized on and then null checked.</p>
+]]>
+			</Details>
+			<BugPattern name="CONVERT_INT2DOUBLE">
+				<ShortDescription>
+					Error convert from int to double
+				</ShortDescription>
+				<LongDescription>
+					Error convert from int to double in {0}
+				</LongDescription>
+				<Details>
+					<![CDATA[
+<p>The parameter of java.lang.Double.longBitsToDouble() is cast from int
+<code>java.lang.Double.longBitsToDouble()</code> statement:</p>
+<pre>
+	int x = 2;
+	int y = 5;
+	// Wrong: yields result 0.0
+	double value1 =  x / y;
+	// Right: yields result 0.4
+	double value2 =  x / (double) y;
+</pre>
+]]>
+				</Details>
+			</BugPattern>
+		</Detector>
+
+		<Detector className="edu.pku.cn.detector.FindFloatMatch">
+			<Details>
+				<![CDATA[
+<p> This detector looks for uses of floating point math. It is a moderately fast detector.</p>
+]]>
+			</Details>
+			<BugPattern name="FL_MATH_USING_FLOAT_PRECISION">
+				<ShortDescription>
+					Method performs math using floating point precision
+				</ShortDescription>
+				<LongDescription>
+					{1} performs math using floating point precision
+				</LongDescription>
+				<Details>
+					<![CDATA[
+<p>
+   The method performs math operations using floating point precision.
+   Floating point precision is very imprecise. For example,
+   16777216.0f + 1.0f = 16777216.0f. Consider using double math instead.</p>
+]]>
+				</Details>
+			</BugPattern>
+		</Detector>
+
+
+<Detector className="edu.pku.cn.detector.FindImplClassNoDefOrUseMethod">
+    <Details>
+      <![CDATA[
+        <p> This detector looks for certain interface's implementation, which does not 
+            define or use specific method(s).</p>
+      ]]>
+    </Details>
+    <BugPattern name="IMPL_NO_METHOD">
+      <ShortDescription>Incomplete implementation of certain interface.</ShortDescription>
+      <LongDescription>When implementing interface {0}, the method {1} is not invoked or defined.</LongDescription>
+      <Details>
+        <![CDATA[
+          <p>The parameter of a method is invalid.
+          <code>java.lang.Cloneable</code> statement:</p>
+          <pre>
+	        public class TestFindImplClassNoDefOrUseMethod implements Cloneable{
+	            public static void main(String[] args){
+		            System.out.println("This is a defective program since clone() method is not defined");		
+	            }
+            }	 
+          </pre>
+        ]]>
+      </Details>
+    </BugPattern>
+</Detector>
+  
+<Detector className="edu.pku.cn.detector.FindInvalidValueInMethodArgument">
+<Details>
+<![CDATA[
+				</Details>
+			</BugPattern>
+		</Detector>
+
+		<Detector className="edu.pku.cn.detector.FindFloatMatch">
+			<Details>
+				<![CDATA[
+<p> This detector looks for uses of floating point math. It is a moderately fast detector.</p>
+]]>
+			</Details>
+			<BugPattern name="FL_MATH_USING_FLOAT_PRECISION">
+				<ShortDescription>
+					Method performs math using floating point precision
+				</ShortDescription>
+				<LongDescription>
+					{1} performs math using floating point precision
+				</LongDescription>
+				<Details>
+					<![CDATA[
+<p>
+   The method performs math operations using floating point precision.
+   Floating point precision is very imprecise. For example,
+   16777216.0f + 1.0f = 16777216.0f. Consider using double math instead.</p>
+]]>
+				</Details>
+			</BugPattern>
+		</Detector>
+
+
+		<Detector
+			className="edu.pku.cn.detector.FindInvalidValueInMethodArgument">
+			<Details>
+				<![CDATA[
+<p> This detector looks for invocation of a method with invalid argument value.</p>
+]]>
+			</Details>
+			<BugPattern name="INVALID_ARGUMENT_VALUE">
+				<ShortDescription>
+					Invalid argument value of a method
+				</ShortDescription>
+				<LongDescription>
+					When invoking method {0} in line {2}, the argument
+					value {1} is invalid.
+				</LongDescription>
+				<Details>
+					<![CDATA[
+<p>The parameter of a method is invalid.
+<code>java.sql.ResultSet</code> statement:</p>
+<pre>
+	 connection = DriverManager.getConnection("dddd");
+     Statement stmt = connection.createStatement (  ) ; 	
+	         
+     ResultSet rs = stmt.executeQuery ( "SELECT col_blob FROM mysql_all_table" ) ;
+     PreparedStatement prestmt = connection.prepareStatement("insert into tb_name(col1, col2, col3, col4)values(?,?,?,?)");
+     
+      if(rs.next()){  
+      //Get the BLOB from the result set
+	     Array array = rs.getArray(0);
+	  }
+</pre>
+]]>
+				</Details>
+			</BugPattern>
+		</Detector>
+
+		<Detector
+			className="edu.pku.cn.detector.FindVacuousComputation">
+			<Details>
+				<![CDATA[
+<p> This detector looks for vacuous computation with a certain integer value.</p>
+]]>
+			</Details>
+			<BugPattern name="VACUOUS_COMPUTATION">
+				<ShortDescription>
+					The computation is vacuous.
+				</ShortDescription>
+				<LongDescription>
+					It is vacuous to compute with {1} using {0} in line
+					{2}.
+				</LongDescription>
+				<Details>
+					<![CDATA[
+<p>The computation is vacuous.
+<code></code> statement:</p>
+<pre>
+	public class TestVacuousComputation {
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		int m = 500;
+		if(m <= Integer.MAX_VALUE)
+		{
+			System.out.println("m <= Integer.MAX_VALUE");
+		}
+		if(m >= Integer.MIN_VALUE)
+		{
+			System.out.println("m > Integer.MIN_VALUE");
+		}
+		if(Integer.MAX_VALUE < m)
+		{
+			System.out.println("m > Integer.MAX_VALUE");
+		}
+		if(Integer.MIN_VALUE > m)
+		{
+			System.out.println("m < Integer.MIN_VALUE");
+		}
+	}
+  } 
+</pre>
+]]>
+				</Details>
+			</BugPattern>
+		</Detector>
+
+
+		<Detector className="edu.pku.cn.detector.FindNoSuperCall">
+			<Details>
+				<![CDATA[
+<p> This detector looks for certain interface's implementation or certain super class' instance, which does not 
+call super method in corresponding method(s).</p>
+]]>
+			</Details>
+			<BugPattern name="NO_SUPER_CALL">
+				<ShortDescription>
+					Subclass does not call super method in overridding
+					method.
+				</ShortDescription>
+				<LongDescription>
+					With super {0}, the method {1} defined does not call
+					super's method.
+				</LongDescription>
+				<Details>
+					<![CDATA[
+<p>The overriding method does not have super call.
+<code>java.lang.Cloneable</code> statement:</p>
+<pre>
+	public class TestFindNoSuperCall implements Cloneable {
+	    public Object clone(){
+            System.out.println("This is a defective example since super.clone() is not called");
+            return new TestFindNoSuperCall();
+	    }
+	} 
+</pre>
+]]>
+				</Details>
+			</BugPattern>
+		</Detector>
+
+		<Detector
+			className="edu.pku.cn.detector.FindImproperMethodCall">
+			<Details>
+				<![CDATA[
+<p> This detector looks for certain interface's implementation or certain super class' instance, which calls
+method improperly.</p>
+]]>
+			</Details>
+			<BugPattern name="IMPROPER_METHOD_CALL">
+				<ShortDescription>
+					Certain method is called improperly.
+				</ShortDescription>
+				<LongDescription>
+					The method {0} is called improperly on instance of
+					{1}.
+				</LongDescription>
+				<Details>
+					<![CDATA[
+<p>Certain method of super type should not be called.
+<code>java.util.concurrent.locks.Condition</code> statement:</p>
+<pre>
+	public class TestFindImproperMethodCall {
+	   final Lock lock = new ReentrantLock();
+	   final Condition notFull  = lock.newCondition(); 
+	   final Condition notEmpty = lock.newCondition(); 
+
+	   final Object[] items = new Object[100];
+	   int putptr, takeptr, count;
+
+	   public void put(Object x) throws InterruptedException {
+	     lock.lock();
+	     try {
+	       while (count == items.length) 
+	         notFull.wait(); //should be "notFull.await()"
+	       items[putptr] = x; 
+	       if (++putptr == items.length) putptr = 0;
+	       ++count;
+	       notEmpty.notify(); //should be "notEmpty.signal()"
+	     } finally {
+	       lock.unlock();
+	     }
+	   }
+	}
+</pre>
+]]>
+				</Details>
+			</BugPattern>
+		</Detector>
+
+		<Detector
+			className="edu.pku.cn.detector.FindInvalidTypeInMethodArgument">
+			<Details>
+				<![CDATA[
+<p> This detector looks for certain the invocation of some method with 
+invalid argument type.</p>
+]]>
+			</Details>
+			<BugPattern name="INVALID_ARGUMENT_TYPE">
+				<ShortDescription>
+					Invocation of the method occurs with invalid
+					argument type.
+				</ShortDescription>
+				<LongDescription>
+					When calling method {1} of {0}, the argument type
+					({2}) is invalid; while type ({3}) is expected.
+				</LongDescription>
+				<Details>
+					<![CDATA[
+<p>The argument type is invalid.
+<code>java.lang.Thread</code> statement:</p>
+<pre>
+	public class TestFindInvalidTypeForMethodArgument {
+	  public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Thread t1 = new Thread(new Runnable(){
+			public void run() {
+				System.out.println("This is a runnable object");				
+			}
+		});
+        Thread t2 = new Thread(t1);
+        t2.start();		
+	  }
+    }
+</pre>
+]]>
+				</Details>
+			</BugPattern>
+		</Detector>
+		<!--
+			<Detector className="edu.pku.cn.detector.analysis.FindWaitOrNotifyWithoutLock">
+			<Details>
+			<![CDATA[
+			<p> This detector looks for invocation of wait() or notify without 
+			lock held.</p>
+			]]>
+			</Details>
+			<BugPattern name="METHOD_CALLED_WITHOUT_LOCK">
+			<ShortDescription>wait() or notify() is called on an object whose lock is not held.</ShortDescription>
+			<LongDescription>method {1} of {0} is invoked when the object's lock is not held.</LongDescription>
+			<Details>
+			<![CDATA[
+			<p>The invocation of the method needs lock.
+			<code>java.lang.Object</code> statement:</p>
+			<pre>
+			public class TestFindWaitOrNotifyWithoutLock {
+			
+			private Object o1;
+			
+			private Object o2;
+			
+			public void testWaitOnO1(){
+			synchronized(o1){
+			try {
+			o1.wait();
+			} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			}
+			}
+			}
+			
+			public void testNotifyOnO2(){
+			o2.notify();
+			}
+			
+			}
+			
+			</pre>
+			]]>
+			</Details>
+			</BugPattern>
+			</Detector>
+		-->
+	</BugCategory>
+	<BugCategory category="Analysis" abbreviation="A">
+		<Description>Analysis</Description>
+		<Details />
+		<Detector
+			className="edu.pku.cn.detector.analysis.LiveStoreDetector">
+			<Details />
+			<BugPattern name="CanStatic">
+				<ShortDescription>
+					This method never used any class non static filed or
+					method
+				</ShortDescription>
+				<LongDescription>
+					{0} never used any class non static filed or method
+				</LongDescription>
+				<Details />
+			</BugPattern>
+			<BugPattern name="LIVESTORE">
+				<ShortDescription>
+					Dead Store in variable
+				</ShortDescription>
+				<LongDescription>Dead Store: {0}</LongDescription>
+				<Details />
+			</BugPattern>
+		</Detector>
+
+		<Detector
+			className="edu.pku.cn.detector.analysis.FindWaitOrNotifyWithoutLock">
+			<Details>
+				<![CDATA[
+      <p> This detector looks for invocation of wait() or notify without 
+          lock held.</p>
+    ]]>
+			</Details>
+			<BugPattern name="METHOD_CALLED_WITHOUT_LOCK">
+				<ShortDescription>
+					wait() or notify() is called on an object whose lock
+					is not held.
+				</ShortDescription>
+				<LongDescription>
+					method {1} of {0} is invoked when the object's lock
+					is not held.
+				</LongDescription>
+				<Details>
+					<![CDATA[
+<p>The invocation of the method needs lock.
+<code>java.lang.Object</code> statement:</p>
+<pre>
+	public class TestFindWaitOrNotifyWithoutLock {
+
+	  private Object o1;
+	
+  	  private Object o2;
+	
+	  public void testWaitOnO1(){
+		  synchronized(o1){
+			  try {
+				  o1.wait();
+			  } catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				  e.printStackTrace();
+			  }
+		  }
+	  }
+	
+	  public void testNotifyOnO2(){
+		  o2.notify();
+	  }
+	
+    }
+	
+</pre>
+]]>
+				</Details>
+			</BugPattern>
+		</Detector>
+
+		<Detector
+			className="edu.pku.cn.detector.analysis.FindSleepWithLockHeld">
+			<Details>
+				<![CDATA[
+      <p> This detector looks for invocation of sleep() with lock(s) held.</p>
+    ]]>
+			</Details>
+			<BugPattern name="METHOD_CALLED_WITH_LOCK_HELD">
+				<ShortDescription>
+					sleep() is called when a lock or locks is/are held.
+				</ShortDescription>
+				<LongDescription>
+					method {1} of {0} is invoked when lock(s) is/are
+					held.
+				</LongDescription>
+				<Details>
+					<![CDATA[
+<p>The invocation of the method should not occur when a lock or locks are held.
+<code>java.lang.Thread</code> statement:</p>
+<pre>
+public class TestFindSleepWithLockHeld {
+
+	Thread t = null;
+	public synchronized void testcaseT1(){
+		t = new Thread(new Runnable(){
+			@Override
+			public void run() {
+				// TODO Auto-generated method stub
+				System.out.println("This is a new thread");
+			}		
+		});
+		try {
+			t.sleep(20);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public void testcaseT2(){
+		synchronized(t){
+			try {
+				Thread.sleep(200l);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	public void testcaseT3(){
+		try {
+			Thread.sleep(2000l);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+}
+</pre>
+]]>
+    </Details>
+  </BugPattern>
+</Detector>
+
+<Detector className="edu.pku.cn.detector.analysis.FindUninitializedLocalVariable">
+    <Details>
+      <![CDATA[
+        <p> This detector looks for uninitialized local variable.</p>
+      ]]>
+    </Details>
+    <BugPattern name="UNINITIALIZED_LOCAL_VARIABLE">
+      <ShortDescription>Uninitialized local variable.</ShortDescription>
+      <LongDescription>The local variable {0} is never initialized.</LongDescription>
+      <Details>
+        <![CDATA[
+          <p>The local variable is never initialized.
+          <code>java.lang.Object</code> statement:</p>
+          <pre>
+	        int a;  
+          </pre>
+        ]]>
+      </Details>
+    </BugPattern>
+  </Detector> 
+
+<Detector className="edu.pku.cn.detector.analysis.FindUnusedDef">
+    <Details>
+      <![CDATA[
+        <p> This detector looks for unused definition of local variable.</p>
+      ]]>
+    </Details>
+    <BugPattern name="UNUSED_DEF">
+      <ShortDescription>Unused definition of local variable.</ShortDescription>
+      <LongDescription>The local variable {0} has been defined but never used.</LongDescription>
+      <Details>
+        <![CDATA[
+          <p>The local variable is not used after being defined.
+          <code>java.lang.Object</code> statement:</p>
+          <pre>
+	        int a = 1;  
+          </pre>
+        ]]>
+      </Details>
+    </BugPattern>
+  </Detector> 
+
+<Detector className="edu.pku.cn.detector.analysis.FindNullDeref">
+    <Details>
+      <![CDATA[
+        <p> This detector looks for null pointer dereference.</p>
+      ]]>
+    </Details>
+    <BugPattern name="NULL_DEREF">
+      <ShortDescription>Dereference a null pointer.</ShortDescription>
+      <LongDescription>{0} references null.</LongDescription>
+      <Details>
+        <![CDATA[
+          <p>The local variable is null when invoking a method
+          <code>java.lang.Object</code> statement:</p>
+          <pre>
+            Object o1 = null;
+	        System.out.println(o1.hashCode());
+          </pre>
+        ]]>
+      </Details>
+    </BugPattern>
+  </Detector> 
+
+<Detector className="edu.pku.cn.detector.analysis.FindWaitOrNotifyWithMultiLocksHeld">
+  <Details>
+    <![CDATA[
+      <p> This detector looks for invocation of wait()/notify() with multiple locks held.</p>
+    ]]>
+			</Details>
+			<BugPattern name="METHOD_CALLED_WITH_MULTILOCKS_HELD">
+				<ShortDescription>
+					wait()/notify() is called when multiple locks are
+					held.
+				</ShortDescription>
+				<LongDescription>
+					method {1} of {0} is invoked when multiple locks are
+					held.
+				</LongDescription>
+				<Details>
+					<![CDATA[
+<p>The invocation of the method should not occur when more than one lock is held.
+<code>java.lang.Object</code> statement:</p>
+<pre>
+public class TestFindWaitOrNotifyWithMultiLocksHeld {
+
+	private String ss1 = "A private field";
+	
+	private Object field2 = new Object();
+	
+	public synchronized void testcaseWithTwoLocks(){
+		System.out.println("This is a test case trying to form up two locks");
+		synchronized(ss1){
+			ss1 = "Change the synchronized field";
+			try {
+				field2.wait();
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+	}
+}
+</pre>
+]]>
+				</Details>
+			</BugPattern>
+		</Detector>
+	</BugCategory>
+
+	<BugCategory category="Idiom" abbreviation="I">
+		<Description>Idiom</Description>
+		<Details>
+			Probable bugs - usually coding habits indicating some bugs.
+		</Details>
+		<Detector
+			className="edu.pku.cn.detector.idiom.FindWeakLoopController">
+			<Details>
+				<![CDATA[
+        <p> This detector looks for weak loop controller.</p>
+      ]]>
+			</Details>
+			<BugPattern name="WEAK_LOOP_CONTROLLER">
+				<ShortDescription>
+					Weak controller of the loop.
+				</ShortDescription>
+				<LongDescription>
+					The loop controller is not incremented while some
+					other variable is incremented instead.
+				</LongDescription>
+				<Details>
+					<![CDATA[
+          <p>The loop controller is not incremented in the loop.
+          <code>java.lang.Object</code> statement:</p>
+          <pre>
+	        int n = 100;
+		    for(int i = 0; i < 100; i ++){
+			    for(int j = 0; i < n; i++){
+				    j = j + i;
+			    }
+		    }
+		
+		    for(int i = 0; i < n; i ++){
+			    for(int j = 0; j < n; i ++){
+				    j = j + i;
+			    }
+		    }	    
+          </pre>
+        ]]>
+      </Details>
+    </BugPattern>
+  </Detector>
+  
+   
+  
+</BugCategory>
+
+
+	<BugCategory category="AutoMachine" abbreviation="AM">
+		<Description>this is executed by AutoMachine</Description>
+		<Details />
+		<Detector className="autoAdapter.AutoMethodAdapter">
+			<Details />
+			<BugPattern name="AutoMachine">
+				<ShortDescription>{0}</ShortDescription>
+				<LongDescription>{0}: {1}</LongDescription>
+				<Details />
+			</BugPattern>
+		</Detector>
+		<Detector className="autoAdapter.AMJIRAdapter">
+			<Details />
+			<BugPattern name="AutoMachine">
+				<ShortDescription>{0}</ShortDescription>
+				<LongDescription>{0}: {1}</LongDescription>
+				<Details />
+			</BugPattern>
+		</Detector>
+		<Detector className="autoAdapter.DataflowAnalysisDetector">
+			<Details />
+			<BugPattern name="AutoMachine">
+				<ShortDescription>{0}</ShortDescription>
+				<LongDescription>{0}: {1}</LongDescription>
+				<Details />
+			</BugPattern>
+		</Detector>
+		<Detector className="autoAdapter.InterMethodsInvokeDetector">
+			<Details />
+			<BugPattern name="AutoMachine">
+				<ShortDescription>{0}</ShortDescription>
+				<LongDescription>{0}: {1}</LongDescription>
+				<Details />
+			</BugPattern>
+		</Detector>
+	</BugCategory>
+</MessageCollection>

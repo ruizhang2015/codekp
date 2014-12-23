@@ -1,0 +1,5 @@
+java/lang/Thread <init> (Ljava/lang/Runnable;)V 0 Ljava/lang/Thread;
+java/util/HashMap get (Ljava/lang/Object;)Ljava/lang/Object; 0 Ljava/net/URL;
+java/util/Map get (Ljava/lang/Object;)Ljava/lang/Object; 0 Ljava/net/URL;
+java/util/HashSet contains (Ljava/lang/Object;)Z 0 Ljava/net/URL;
+java/util/Set contains (Ljava/lang/Object;)Z 0 Ljava/net/URL;

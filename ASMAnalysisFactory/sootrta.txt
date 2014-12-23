@@ -1,0 +1,32 @@
+main([Ljava/lang/String;)V{lgt.testCases.TestFileInputStreamOpenClose}-->31
+			<init>()V{lgt.testCases.TestFileInputStreamOpenClose}
+<init>()V{lgt.testCases.TestFileInputStreamOpenClose}-->5
+			<init>()V{lgt.testCases.Callee}
+main([Ljava/lang/String;)V{lgt.testCases.TestFileInputStreamOpenClose}-->34
+			doNothing()V{lgt.testCases.TestFileInputStreamOpenClose}
+main([Ljava/lang/String;)V{lgt.testCases.TestFileInputStreamOpenClose}-->37
+			doNothing2()V{lgt.testCases.TestFileInputStreamOpenClose}
+main([Ljava/lang/String;)V{lgt.testCases.TestFileInputStreamOpenClose}-->40
+			main([Ljava/lang/String;)V{lgt.testCases.Callee}
+main([Ljava/lang/String;)V{lgt.testCases.TestFileInputStreamOpenClose}-->44
+			<init>()V{lgt.testCases.CalleeSubClass}
+<init>()V{lgt.testCases.CalleeSubClass}-->2
+			<init>()V{lgt.testCases.Callee}
+main([Ljava/lang/String;)V{lgt.testCases.TestFileInputStreamOpenClose}-->48
+			<init>()V{lgt.testCases.CalleeSubClass2}
+<init>()V{lgt.testCases.CalleeSubClass2}-->2
+			<init>()V{lgt.testCases.Callee}
+main([Ljava/lang/String;)V{lgt.testCases.TestFileInputStreamOpenClose}-->51
+			doNothing()V{lgt.testCases.CalleeSubClass}
+			doNothing()V{lgt.testCases.Callee}
+			doNothing()V{lgt.testCases.CalleeSubClass2}
+doNothing()V{lgt.testCases.Callee}-->2
+			main([Ljava/lang/String;)V{lgt.testCases.CalleeSubClass2}
+main([Ljava/lang/String;)V{lgt.testCases.TestFileInputStreamOpenClose}-->61
+			doNothing3()V{lgt.testCases.CalleeSubClass}
+			doNothing3()V{lgt.testCases.Callee}
+			doNothing3()V{lgt.testCases.CalleeSubClass2}
+Edges:12
+All Edges:16
+Nodes:5
+ takes time:1594ms

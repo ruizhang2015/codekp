@@ -1,0 +1,46 @@
+right2()V{edu.pku.cn.testcase.TestCloseDbConnection}-->16
+			closeConnection(Ljava/sql/Connection;)V{edu.pku.cn.testcase.TestCloseDbConnection}
+right2()V{edu.pku.cn.testcase.TestCloseDbConnection}-->22
+			f1(Ljava/sql/Connection;)V{edu.pku.cn.testcase.TestCloseDbConnectionSon}
+			f1(Ljava/sql/Connection;)V{edu.pku.cn.testcase.temp.TestCloseDbConnectionSon}
+			f1(Ljava/sql/Connection;)V{edu.pku.cn.testcase.TestCloseDbConnection}
+f1(Ljava/sql/Connection;)V{edu.pku.cn.testcase.TestCloseDbConnection}-->2
+			f2(Ljava/sql/Connection;)V{edu.pku.cn.testcase.temp.TestCloseDbConnectionSon}
+			f2(Ljava/sql/Connection;)V{edu.pku.cn.testcase.TestCloseDbConnection}
+			f2(Ljava/sql/Connection;)V{edu.pku.cn.testcase.TestCloseDbConnectionSon}
+f1(Ljava/sql/Connection;)V{edu.pku.cn.testcase.TestCloseDbConnectionSon}-->2
+			f2(Ljava/sql/Connection;)V{edu.pku.cn.testcase.TestCloseDbConnectionSon}
+f1(Ljava/sql/Connection;)V{edu.pku.cn.testcase.temp.TestCloseDbConnectionSon}-->2
+			f2(Ljava/sql/Connection;)V{edu.pku.cn.testcase.temp.TestCloseDbConnectionSon}
+f2(Ljava/sql/Connection;)V{edu.pku.cn.testcase.TestCloseDbConnection}-->2
+			f3(Ljava/sql/Connection;)V{edu.pku.cn.testcase.TestCloseDbConnectionSon}
+			f3(Ljava/sql/Connection;)V{edu.pku.cn.testcase.temp.TestCloseDbConnectionSon}
+			f3(Ljava/sql/Connection;)V{edu.pku.cn.testcase.TestCloseDbConnection}
+f2(Ljava/sql/Connection;)V{edu.pku.cn.testcase.TestCloseDbConnectionSon}-->2
+			f3(Ljava/sql/Connection;)V{edu.pku.cn.testcase.TestCloseDbConnectionSon}
+f2(Ljava/sql/Connection;)V{edu.pku.cn.testcase.temp.TestCloseDbConnectionSon}-->2
+			f3(Ljava/sql/Connection;)V{edu.pku.cn.testcase.temp.TestCloseDbConnectionSon}
+f3(Ljava/sql/Connection;)V{edu.pku.cn.testcase.TestCloseDbConnection}-->2
+			f4(Ljava/sql/Connection;)V{edu.pku.cn.testcase.TestCloseDbConnection}
+			f4(Ljava/sql/Connection;)V{edu.pku.cn.testcase.temp.TestCloseDbConnectionSon}
+			f4(Ljava/sql/Connection;)V{edu.pku.cn.testcase.TestCloseDbConnectionSon}
+f3(Ljava/sql/Connection;)V{edu.pku.cn.testcase.TestCloseDbConnectionSon}-->2
+			f4(Ljava/sql/Connection;)V{edu.pku.cn.testcase.TestCloseDbConnectionSon}
+f3(Ljava/sql/Connection;)V{edu.pku.cn.testcase.temp.TestCloseDbConnectionSon}-->2
+			f4(Ljava/sql/Connection;)V{edu.pku.cn.testcase.temp.TestCloseDbConnectionSon}
+f4(Ljava/sql/Connection;)V{edu.pku.cn.testcase.TestCloseDbConnection}-->2
+			f5(Ljava/sql/Connection;)V{edu.pku.cn.testcase.temp.TestCloseDbConnectionSon}
+			f5(Ljava/sql/Connection;)V{edu.pku.cn.testcase.TestCloseDbConnectionSon}
+			f5(Ljava/sql/Connection;)V{edu.pku.cn.testcase.TestCloseDbConnection}
+f4(Ljava/sql/Connection;)V{edu.pku.cn.testcase.TestCloseDbConnectionSon}-->2
+			f5(Ljava/sql/Connection;)V{edu.pku.cn.testcase.TestCloseDbConnectionSon}
+f4(Ljava/sql/Connection;)V{edu.pku.cn.testcase.temp.TestCloseDbConnectionSon}-->2
+			f5(Ljava/sql/Connection;)V{edu.pku.cn.testcase.temp.TestCloseDbConnectionSon}
+f5(Ljava/sql/Connection;)V{edu.pku.cn.testcase.TestCloseDbConnection}-->2
+			f6(Ljava/sql/Connection;)V{edu.pku.cn.testcase.TestCloseDbConnection}
+			f6(Ljava/sql/Connection;)V{edu.pku.cn.testcase.TestCloseDbConnectionSon}
+			f6(Ljava/sql/Connection;)V{edu.pku.cn.testcase.temp.TestCloseDbConnectionSon}
+f5(Ljava/sql/Connection;)V{edu.pku.cn.testcase.TestCloseDbConnectionSon}-->2
+			f6(Ljava/sql/Connection;)V{edu.pku.cn.testcase.TestCloseDbConnectionSon}
+f5(Ljava/sql/Connection;)V{edu.pku.cn.testcase.temp.TestCloseDbConnectionSon}-->2
+			f6(Ljava/sql/Connection;)V{edu.pku.cn.testcase.temp.TestCloseDbConnectionSon}

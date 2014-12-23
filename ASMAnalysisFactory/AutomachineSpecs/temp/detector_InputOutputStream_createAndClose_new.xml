@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Automachine> 
+	<description>create a Resource and not close it</description>
+	<errorMessage>创建一个 {0} 最后一次要调用 close</errorMessage>
+	<objectSensitive>true</objectSensitive>
+	<onlyConcernClass>java.io.InputStream;java.io.OutputStream;java.io.BufferedInputStream;java.io.BufferedOutputStream;</onlyConcernClass>
+	<allOpcodePushOjectAutomachine>false</allOpcodePushOjectAutomachine>	
+	<severeLevel>0</severeLevel>
+	<state>
+		<number>1</number>
+		<isEndState>false</isEndState>
+		<isOriginState>true</isOriginState>
+		<exceptionState>1</exceptionState>
+		<status>right</status>
+		<edge>
+				<class>VisitNewInsnEdge</class>
+				<toState>2</toState>
+				<opcode>New</opcode>
+				<type>Ljava/io/BufferedInputStream;</type>
+		</edge>
+		<edge>
+				<class>VisitNewInsnEdge</class>
+				<toState>2</toState>
+				<opcode>New</opcode>
+				<type>Ljava/io/BufferedOutputStream;</type>
+		</edge>
+		<edge>
+				<class>VisitNewInsnEdge</class>
+				<toState>2</toState>
+				<opcode>New</opcode>
+				<type>Ljava/io/FileInputStream;</type>
+		</edge>
+	</state>
+	<state>
+		<number>2</number>
+		<isEndState>false</isEndState>
+		<isOriginState>false</isOriginState>
+		<exceptionState>2</exceptionState>
+		<status>right</status>
+		<edge>
+				<class>VisitMethodInsnEdge</class>
+				<toState>3</toState>
+				<opcode>InvokeVirtual</opcode>
+				<owner>java.io.BufferedInputStream</owner>
+				<name>close</name>
+				<desc>()V</desc>
+		</edge>
+	</state>
+	<state>
+		<number>3</number>		
+		<isEndState>true</isEndState>
+		<isOriginState>false</isOriginState>
+		<exceptionState>3</exceptionState>
+		<status>right</status>
+		<edge>
+				<class>VisitMethodInsnEdge</class>
+				<toState>3</toState>
+				<opcode>invokeinterface</opcode>
+				<owner></owner>
+				<name>close</name>
+				<desc>()V</desc>
+		</edge>
+	</state>
+</Automachine>

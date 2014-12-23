@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Automachine  > 
+	<description>当使用类javax.resource.spi.ManagedConnection时，方法调用要遵循以下顺序:当ManagedConnection所对应的connection不再使用时，调用destroy()方法销毁并释放资源。</description>
+	<errorMessage>当使用类{0}时，方法调用要遵循以下顺序:当ManagedConnection所对应的connection不再使用时，调用destroy()方法销毁并释放资源。</errorMessage>
+	<endMeanViolateDefect>false</endMeanViolateDefect>
+	<objectSensitive>true</objectSensitive>
+	<onlyConcernClass>javax.resource.spi.ManagedConnection</onlyConcernClass>
+	<allOpcodePushOjectAutomachine>false</allOpcodePushOjectAutomachine>	
+	<severeLevel>0</severeLevel>
+	<state>
+		<number>1</number>
+		<isEndState>false</isEndState>
+		<isOriginState>true</isOriginState>
+		<exceptionState>1</exceptionState>		
+		<edge>		
+				<class>VisitMethodInsnEdge</class>
+				<toState>2</toState>
+				<opcode>invokeinterface</opcode>
+				<owner>java.io.InputStream</owner>
+				<name>createManagedConnection</name>
+				<desc>(Ljavax/security/auth/Subject;Ljavax/resource/spi/ConnectionRequestInfo;)Ljavax/resource/spi/ManagedConnection;</desc>
+				<bindToReturnValue>true</bindToReturnValue>
+			</edge>	
+		<edge>		
+				<class>VisitMethodInsnEdge</class>
+				<toState>2</toState>
+				<opcode>invokeinterface</opcode>
+				<owner>java.io.InputStream</owner>
+				<name>matchManagedConnections</name>
+				<desc>(Ljava/util/Set;Ljavax/security/auth/Subject;Ljavax/resource/spi/ConnectionRequestInfo;)Ljavax/resource/spi/ManagedConnection;</desc>
+				<bindToReturnValue>true</bindToReturnValue>
+			</edge>	
+	</state>
+	
+	<state>
+		<number>2</number>
+		<isEndState>false</isEndState>
+		<isOriginState>false</isOriginState>
+		<exceptionState>2</exceptionState>
+		
+			<edge>
+				<class>VisitMethodInsnEdge</class>
+				<toState>3</toState>
+				<opcode>invokevirtual</opcode>
+				<owner>javax.resource.spi.ManagedConnection</owner>
+				<name>destroy</name>
+				<desc>()V</desc>
+			</edge>		
+	</state>
+	
+	<state>
+		<number>3</number>		
+		<isEndState>true</isEndState>
+		<isOriginState>false</isOriginState>
+		<exceptionState>3</exceptionState>
+								<edge>
+					<class>VisitMethodInsnEdge</class>
+					<toState>4</toState>
+					<opcode>invokeinterface</opcode>
+					<owner>javax.resource.spi.ManagedConnection</owner>
+					<name>true</name>
+					<desc>true</desc>
+			</edge>
+	</state>
+			<state>
+		<number>4</number>		
+		<isEndState>false</isEndState>
+		<isOriginState>false</isOriginState>
+		<exceptionState>4</exceptionState>
+	</state>	
+
+
+</Automachine>

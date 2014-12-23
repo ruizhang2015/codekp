@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:element name="BugPattern">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="ShortDescription"/>
+        <xsd:element ref="LongDescription"/>
+        <xsd:element ref="Details"/>
+      </xsd:sequence>
+      <xsd:attribute name="name" type="xsd:string"/>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="Description" type="xsd:string"/>
+  <xsd:element name="Detector">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="Details"/>
+        <xsd:element maxOccurs="unbounded" ref="BugPattern"/>
+      </xsd:sequence>
+      <xsd:attribute name="className" type="xsd:string"/>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="MessageCollection">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element maxOccurs="unbounded" ref="BugCategory"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="Details" type="xsd:string"/>
+  <xsd:element name="BugCategory">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="Description"/>
+        <xsd:element ref="Details"/>
+        <xsd:element maxOccurs="unbounded" ref="Detector"/>
+      </xsd:sequence>
+      <xsd:attribute name="category" type="xsd:string"/>
+      <xsd:attribute name="abbreviation" type="xsd:string"/>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="LongDescription" type="xsd:string"/>
+  <xsd:element name="ShortDescription" type="xsd:string"/>
+</xsd:schema>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Automachine  >
+ 
+	<description>start a Detector but not stop it</description>
+	<errorMessage>start a Detector but not stop it</errorMessage>
+	<endMeanViolateDefect>false</endMeanViolateDefect>
+	<objectSensitive>true</objectSensitive>
+	<onlyConcernClass></onlyConcernClass>
+	<allOpcodePushOjectAutomachine>false</allOpcodePushOjectAutomachine>	
+	<severeLevel>0</severeLevel>
+	<state>
+		<number>1</number>
+		<isEndState>false</isEndState>
+		<isOriginState>true</isOriginState>
+		<exceptionState>1</exceptionState>
+		<edge>
+				<class>VisitMethodInsnEdge</class>
+				<toState>2</toState>
+				<opcode>invokeinterface</opcode>
+				<owner>org.jboss.remoting.detection.Detector</owner>
+				<name>start</name>
+				<desc>()V</desc>
+		</edge>	
+				<edge>
+				<class>VisitMethodInsnEdge</class>
+				<toState>2</toState>
+				<opcode>invokespecial</opcode>
+				<owner>org.jboss.remoting.detection.Detector</owner>
+				<name>start</name>
+				<desc>()V</desc>
+		</edge>	
+	</state>
+	
+	<state>
+		<number>2</number>
+		<isEndState>false</isEndState>
+		<isOriginState>false</isOriginState>
+		<exceptionState>2</exceptionState>
+		
+			<edge>
+				<class>VisitMethodInsnEdge</class>
+				<toState>3</toState>
+				<opcode>invokeinterface</opcode>
+				<owner>org.jboss.remoting.detection.Detector</owner>
+				<name>stop</name>
+				<desc>()V</desc>
+			</edge>		
+						<edge>
+				<class>VisitMethodInsnEdge</class>
+				<toState>3</toState>
+				<opcode>invokespecial</opcode>
+				<owner>org.jboss.remoting.detection.Detector</owner>
+				<name>stop</name>
+				<desc>()V</desc>
+			</edge>		
+	</state>
+	
+	<state>
+		<number>3</number>		
+		<isEndState>true</isEndState>
+		<isOriginState>false</isOriginState>
+		<exceptionState>3</exceptionState>
+	</state>
+	
+
+
+</Automachine>

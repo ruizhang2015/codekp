@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Automachine  >
+	<description>try to get a command line process' exit value but not use
+	waitfor to check whether the process is end or not</description>
+	<errorMessage>try to get exit value not make sure is the process end,
+	you shoud use waitfor() to check it</errorMessage>
+	<endMeanViolateDefect>true</endMeanViolateDefect>
+	<severeLevel>0</severeLevel>
+	<state>
+			<number>1</number>
+			<isEndState>false</isEndState>
+			<isOriginState>true</isOriginState>
+			<exceptionState>1</exceptionState>		
+			<edge>
+					<class>VisitMethodInsnEdge</class>
+					<toState>2</toState>
+					<opcode>invokevirtual</opcode>
+					<owner>java.lang.Runtime</owner>
+					<name>exec</name>
+					<desc>(Ljava/lang/String;)Ljava/lang/Process;</desc>
+			</edge>
+			
+			
+	</state>	
+	<state>
+			<number>2</number>
+			<isEndState>false</isEndState>
+			<isOriginState>false</isOriginState>
+			<exceptionState>2</exceptionState>		
+			<edge>
+					<class>VisitMethodInsnEdge</class>
+					<toState>1</toState>
+					<opcode>invokevirtual</opcode>
+					<owner>java.lang.Process</owner>
+					<name>waitFor</name>
+					<desc>()I</desc>
+			</edge>
+			<edge>
+					<class>VisitMethodInsnEdge</class>
+					<toState>3</toState>
+					<opcode>invokevirtual</opcode>
+					<owner>java.lang.Process</owner>
+					<name>exitValue</name>
+					<desc>()I</desc>
+			</edge>
+			
+			
+			
+			
+	</state>
+	<state>
+			<number>3</number>
+			<isEndState>true</isEndState>
+			<isOriginState>false</isOriginState>
+			<exceptionState>3</exceptionState>		
+			
+			
+	</state>
+		
+	
+		
+	
+		
+	
+</Automachine>
