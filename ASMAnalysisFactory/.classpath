@@ -12,5 +12,21 @@
 	<classpathentry kind="lib" path="lib/org.eclipse.emf.ecore.xmi_2.3.2.v200802051830.jar"/>
 	<classpathentry kind="lib" path="lib/mysql-connector-java-5.1.10-bin.jar"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/asm"/>
+	<classpathentry kind="lib" path="E:/Code/IBM/svnkit-1.7.13/lib/svnkit-1.7.13.jar"/>
+	<classpathentry kind="lib" path="E:/Code/IBM/svnkit-1.7.13/lib/antlr-runtime-3.4.jar"/>
+	<classpathentry kind="lib" path="E:/Code/IBM/svnkit-1.7.13/lib/jna-3.4.0.jar"/>
+	<classpathentry kind="lib" path="E:/Code/IBM/svnkit-1.7.13/lib/jsch.agentproxy.connector-factory-0.0.6.jar"/>
+	<classpathentry kind="lib" path="E:/Code/IBM/svnkit-1.7.13/lib/jsch.agentproxy.core-0.0.6.jar"/>
+	<classpathentry kind="lib" path="E:/Code/IBM/svnkit-1.7.13/lib/jsch.agentproxy.pageant-0.0.6.jar"/>
+	<classpathentry kind="lib" path="E:/Code/IBM/svnkit-1.7.13/lib/jsch.agentproxy.sshagent-0.0.6.jar"/>
+	<classpathentry kind="lib" path="E:/Code/IBM/svnkit-1.7.13/lib/jsch.agentproxy.svnkit-trilead-ssh2-0.0.6.jar"/>
+	<classpathentry kind="lib" path="E:/Code/IBM/svnkit-1.7.13/lib/jsch.agentproxy.usocket-jna-0.0.6.jar"/>
+	<classpathentry kind="lib" path="E:/Code/IBM/svnkit-1.7.13/lib/jsch.agentproxy.usocket-nc-0.0.6.jar"/>
+	<classpathentry kind="lib" path="E:/Code/IBM/svnkit-1.7.13/lib/platform-3.4.0.jar"/>
+	<classpathentry kind="lib" path="E:/Code/IBM/svnkit-1.7.13/lib/sequence-library-1.0.2.jar"/>
+	<classpathentry kind="lib" path="E:/Code/IBM/svnkit-1.7.13/lib/sqljet-1.1.10.jar"/>
+	<classpathentry kind="lib" path="E:/Code/IBM/svnkit-1.7.13/lib/svnkit-cli-1.7.13.jar"/>
+	<classpathentry kind="lib" path="E:/Code/IBM/svnkit-1.7.13/lib/svnkit-javahl16-1.7.13.jar"/>
+	<classpathentry kind="lib" path="E:/Code/IBM/svnkit-1.7.13/lib/trilead-ssh2-1.0.0-build217.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

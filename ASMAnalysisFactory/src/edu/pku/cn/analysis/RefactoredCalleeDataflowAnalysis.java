@@ -174,7 +174,7 @@ public class RefactoredCalleeDataflowAnalysis extends RefactoredBasicDataflowAna
 				}
 			}
 		};
-		driver.execute("TestAnalysisLiveVariable");
+		driver.execute("Test");
 	}
 }
 
