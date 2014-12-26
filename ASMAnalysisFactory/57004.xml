@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<!DOCTYPE bugzilla SYSTEM "https://issues.apache.org/bugzilla/page.cgi?id=bugzilla.dtd">
+
+<bugzilla version="4.4.6"
+          urlbase="https://issues.apache.org/bugzilla/"
+          
+          maintainer="bugzilla-admin@apache.org"
+>
+
+    <bug>
+          <bug_id>57004</bug_id>
+          
+          <creation_ts>2014-09-22 20:59:00 +0000</creation_ts>
+          <short_desc>Get number of stuck threads from StuckThreadDetectionValve through jmx</short_desc>
+          <delta_ts>2014-09-23 13:00:27 +0000</delta_ts>
+          <reporter_accessible>1</reporter_accessible>
+          <cclist_accessible>1</cclist_accessible>
+          <classification_id>1</classification_id>
+          <classification>Unclassified</classification>
+          <product>Tomcat 8</product>
+          <component>Catalina</component>
+          <version>trunk</version>
+          <rep_platform>All</rep_platform>
+          <op_sys>All</op_sys>
+          <bug_status>RESOLVED</bug_status>
+          <resolution>FIXED</resolution>
+          
+          
+          <bug_file_loc></bug_file_loc>
+          <status_whiteboard></status_whiteboard>
+          <keywords></keywords>
+          <priority>P2</priority>
+          <bug_severity>enhancement</bug_severity>
+          <target_milestone>----</target_milestone>
+          
+          
+          <everconfirmed>1</everconfirmed>
+          <reporter name="Jiří Pejchal">jiri.pejchal</reporter>
+          <assigned_to name="Tomcat Developers Mailing List">dev</assigned_to>
+          
+          <votes>0</votes>
+
+      
+
+      
+
+      
+
+          <comment_sort_order>oldest_to_newest</comment_sort_order>  
+          <long_desc isprivate="0" >
+    <commentid>178037</commentid>
+    <comment_count>0</comment_count>
+    <who name="Jiří Pejchal">jiri.pejchal</who>
+    <bug_when>2014-09-22 20:59:14 +0000</bug_when>
+    <thetext>It would be nice if the number of stuck threads reported by StuckThreadDetectionValve was available through jmx (e.g. stuckThreadCount).
+
+The number of stuck threads is stored in the stuckCount variable. However there is no jmx attribute for it, there is only getter for stuckThreadIds which is long[].
+
+
+I usually use tool like jmxtrans to get the value and plot a graph with graphite.</thetext>
+  </long_desc><long_desc isprivate="0" >
+    <commentid>178042</commentid>
+    <comment_count>1</comment_count>
+      <attachid>32045</attachid>
+    <who name="Jiří Pejchal">jiri.pejchal</who>
+    <bug_when>2014-09-23 12:34:05 +0000</bug_when>
+    <thetext>Created attachment 32045
+Patch for getting stuckThreadCount through jmx
+
+This would be nice to have in tomcat7 too.</thetext>
+  </long_desc><long_desc isprivate="0" >
+    <commentid>178043</commentid>
+    <comment_count>2</comment_count>
+    <who name="Christopher Schultz">chris</who>
+    <bug_when>2014-09-23 13:00:27 +0000</bug_when>
+    <thetext>Fixed in trunk in r1626991. Will be in Tomcat 8.0.13 and later.
+Fixed in Tomcat 7. Will be in Tomcat 7.0.56 and later.</thetext>
+  </long_desc>
+      
+          <attachment
+              isobsolete="0"
+              ispatch="1"
+              isprivate="0"
+          >
+            <attachid>32045</attachid>
+            <date>2014-09-23 12:34:00 +0000</date>
+            <delta_ts>2014-09-23 12:34:05 +0000</delta_ts>
+            <desc>Patch for getting stuckThreadCount through jmx</desc>
+            <filename>stuckThreadCount.patch</filename>
+            <type>text/plain</type>
+            <size>1406</size>
+            <attacher name="Jiří Pejchal">jiri.pejchal</attacher>
+            
+              <data encoding="base64">SW5kZXg6IGphdmEvb3JnL2FwYWNoZS9jYXRhbGluYS92YWx2ZXMvU3R1Y2tUaHJlYWREZXRlY3Rp
+b25WYWx2ZS5qYXZhDQo9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09
+PT09PT09PT09PT09PT09PT09PT09PT09DQotLS0gamF2YS9vcmcvYXBhY2hlL2NhdGFsaW5hL3Zh
+bHZlcy9TdHVja1RocmVhZERldGVjdGlvblZhbHZlLmphdmEJKHJldmlzaW9uIDE2MjY5ODMpDQor
+KysgamF2YS9vcmcvYXBhY2hlL2NhdGFsaW5hL3ZhbHZlcy9TdHVja1RocmVhZERldGVjdGlvblZh
+bHZlLmphdmEJKHdvcmtpbmcgY29weSkNCkBAIC0yNDcsNiArMjQ3LDkgQEANCiAgICAgICAgIH0N
+CiAgICAgfQ0KIA0KKyAgICBwdWJsaWMgaW50IGdldFN0dWNrVGhyZWFkQ291bnQoKSB7DQorICAg
+ICAgICByZXR1cm4gc3R1Y2tDb3VudC5nZXQoKTsNCisgICAgfQ0KICAgICBwdWJsaWMgbG9uZ1td
+IGdldFN0dWNrVGhyZWFkSWRzKCkgew0KICAgICAgICAgTGlzdDxMb25nPiBpZExpc3QgPSBuZXcg
+QXJyYXlMaXN0PD4oKTsNCiAgICAgICAgIGZvciAoTW9uaXRvcmVkVGhyZWFkIG1vbml0b3JlZFRo
+cmVhZCA6IGFjdGl2ZVRocmVhZHMudmFsdWVzKCkpIHsNCkluZGV4OiBqYXZhL29yZy9hcGFjaGUv
+Y2F0YWxpbmEvdmFsdmVzL21iZWFucy1kZXNjcmlwdG9ycy54bWwNCj09PT09PT09PT09PT09PT09
+PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0NCi0tLSBq
+YXZhL29yZy9hcGFjaGUvY2F0YWxpbmEvdmFsdmVzL21iZWFucy1kZXNjcmlwdG9ycy54bWwJKHJl
+dmlzaW9uIDE2MjY5ODMpDQorKysgamF2YS9vcmcvYXBhY2hlL2NhdGFsaW5hL3ZhbHZlcy9tYmVh
+bnMtZGVzY3JpcHRvcnMueG1sCSh3b3JraW5nIGNvcHkpDQpAQCAtNTE3LDYgKzUxNywxMSBAQA0K
+ICAgICAgICAgICAgICAgIHR5cGU9ImphdmEubGFuZy5TdHJpbmciDQogICAgICAgICAgICAgICAg
+d3JpdGVhYmxlPSJmYWxzZSIvPg0KIA0KKyAgICA8YXR0cmlidXRlIG5hbWU9InN0dWNrVGhyZWFk
+Q291bnQiDQorICAgICAgICAgICAgICAgZGVzY3JpcHRpb249IkNvdW50IG9mIHRoZSB0aHJlYWRz
+IGN1cnJlbnRseSBjb25zaWRlcmVkIHN0dWNrIg0KKyAgICAgICAgICAgICAgIHR5cGU9ImludCIN
+CisgICAgICAgICAgICAgICB3cml0ZWFibGU9ImZhbHNlIi8+DQorDQogICAgIDxhdHRyaWJ1dGUg
+bmFtZT0ic3R1Y2tUaHJlYWRJZHMiDQogICAgICAgICAgICAgICAgZGVzY3JpcHRpb249IklEcyBv
+ZiB0aGUgdGhyZWFkcyBjdXJyZW50bHkgY29uc2lkZXJlZCBzdHVjay4gRWFjaCBJRCBjYW4gdGhl
+biBiZSB1c2VkIHdpdGggdGhlIFRocmVhZGluZyBNQmVhbiB0byByZXRyaWV2ZSBkYXRhIGFib3V0
+IGl0LiINCiAgICAgICAgICAgICAgICB0eXBlPSJsb25nW10iDQo=
+</data>
+
+          </attachment>
+      
+
+    </bug>
+
+</bugzilla>

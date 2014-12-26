@@ -54,7 +54,6 @@ import org.tmatesoft.svn.core.wc.SVNLogClient;
 import org.tmatesoft.svn.core.wc.SVNRevision;
 import org.tmatesoft.svn.core.wc.SVNWCUtil;
 
-import com.sun.org.apache.bcel.internal.generic.NEW;
 
 /**
  * @author ZR-Private
@@ -103,12 +102,12 @@ public class SVNUtil {
 	}
 
 	/*
-	 * private static void setupLibrary() { // 对于使用http://和https：//
-	 * DAVRepositoryFactory.setup(); // 对于使用svn：/ /和svn+xxx：/ /
+	 * private static void setupLibrary() { // 对于使用http://和https＄1�7//
+	 * DAVRepositoryFactory.setup(); // 对于使用svn＄1�7/ /和svn+xxx＄1�7/ /
 	 * SVNRepositoryFactoryImpl.setup(); // 对于使用file://
 	 * FSRepositoryFactory.setup(); }
 	 * 
-	 * public boolean login() { setupLibrary(); try { // 创建库连接 repository =
+	 * public boolean login() { setupLibrary(); try { // 创建库连掄1�7 repository =
 	 * SVNRepositoryFactoryImpl.create(SVNURL.parseURIEncoded(this.svnRoot)); //
 	 * 身份验证 ISVNAuthenticationManager authManager =
 	 * SVNWCUtil.createDefaultAuthenticationManager();
