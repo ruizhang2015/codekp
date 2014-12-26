@@ -244,8 +244,7 @@ public class SVNUtil {
 		List<String> logPaths = new ArrayList<String>();
 		for (String path : su.svnList(url + rootPath, endRevision, endRevision)) {
 			logPaths.add(rootPath + path);
-		}
-		
+		}		
 		su.svnLog(logPaths.toArray(new String[0]), startRevision, endRevision);
 		//su.getCommitinfo();
 		su.svnAnnotate(url + annotatePath, startRevision, endRevision);
