@@ -229,7 +229,8 @@ public class SVNUtil {
 		String rootPath = "/tomcat/trunk/java/org/apache/catalina/valves/";
 		String annotatePath = "/tomcat/trunk/java/org/apache/catalina/valves/StuckThreadDetectionValve.java";
 		SVNRevision startRevision = SVNRevision.create(1090003);
-		SVNRevision endRevision = SVNRevision.HEAD;
+		SVNRevision endRevision = SVNRevision.create(1090003);
+		//SVNRevision endRevision = SVNRevision.HEAD;
 		// String[] paths = {
 		// "/tomcat/trunk/java/org/apache/catalina/valves/StuckThreadDetectionValve.java",
 		// "/tomcat/trunk/java/org/apache/catalina/valves/AbstractAccessLogValve.java"
