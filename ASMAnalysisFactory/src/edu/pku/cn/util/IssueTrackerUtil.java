@@ -38,7 +38,7 @@ public class IssueTrackerUtil {
 	private CloseableHttpClient httpclient = HttpClients.createDefault();
 
 	public String getIssueXml(String url) {
-		System.out.println("HttpGet...");
+		System.out.println("IssueXml HttpGet...");
 		HttpGet httpget = new HttpGet(url);
 		CloseableHttpResponse response;
 		String res = null;

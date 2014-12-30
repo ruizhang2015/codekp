@@ -18,7 +18,10 @@
  */
 package edu.pku.cn.util;
 
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.text.DateFormat;
 import java.util.ArrayList;
@@ -54,14 +57,12 @@ import org.tmatesoft.svn.core.wc.SVNLogClient;
 import org.tmatesoft.svn.core.wc.SVNRevision;
 import org.tmatesoft.svn.core.wc.SVNWCUtil;
 
-
 /**
  * @author ZR-Private
  */
 
 public class SVNUtil {
 	private String svnRoot;
-	private SVNRepository repository;
 	private SVNLogClient svnlogclient;
 	HashMap<Integer, String> commitinfo = new HashMap<Integer, String>();
 	List<String[]> linemsg = new ArrayList<String[]>();
@@ -85,12 +86,12 @@ public class SVNUtil {
 	}
 
 	public List<String[]> getLinemsg() {
-		int i = 0;
+		/*int i = 0;
 		for (String[] strs : linemsg) {
 			System.out.println(i++);
 			System.out.println("[" + strs[0] + "]" + strs[1]);
 			System.out.println(strs[2]);
-		}
+		}*/
 		return this.linemsg;
 	}
 
@@ -101,15 +102,36 @@ public class SVNUtil {
 		return this.paths;
 	}
 
+	public List<String> getIssueidFrLinemsg() {
+		List<String> res = new ArrayList<String>();
+
+		for (String[] strs : linemsg) {
+			if (strs[1] != null && strs[1].contains("bugzilla") && strs[1].contains("id=")) {
+				int startIndex = strs[1].indexOf("id=") + 3;
+				int i = startIndex;
+				while ((strs[1].charAt(++i) >= '0') && (strs[1].charAt(i) <= '9'))
+					;
+				String r = strs[1].substring(startIndex, i);
+				if (!res.contains(r)) {
+					res.add(r);
+					//System.out.println(r);
+				}
+			}
+		}
+		return res;
+	}
+
 	/*
-	 * private static void setupLibrary() { // 对于使用http://和https＄1�7//
-	 * DAVRepositoryFactory.setup(); // 对于使用svn＄1�7/ /和svn+xxx＄1�7/ /
-	 * SVNRepositoryFactoryImpl.setup(); // 对于使用file://
+	 * private static void setupLibrary() { //
+	 * å¯¹äºŽä½¿ç”¨http://å’Œhttpsï¼„1¤7// DAVRepositoryFactory.setup(); //
+	 * å¯¹äºŽä½¿ç”¨svnï¼„1¤7/ /å’Œsvn+xxxï¼„1¤7/ /
+	 * SVNRepositoryFactoryImpl.setup(); // å¯¹äºŽä½¿ç”¨file://
 	 * FSRepositoryFactory.setup(); }
 	 * 
-	 * public boolean login() { setupLibrary(); try { // 创建库连掄1�7 repository =
+	 * public boolean login() { setupLibrary(); try { // åˆ›å»ºåº“è¿žæŽ„1¤7
+	 * repository =
 	 * SVNRepositoryFactoryImpl.create(SVNURL.parseURIEncoded(this.svnRoot)); //
-	 * 身份验证 ISVNAuthenticationManager authManager =
+	 * èº«ä»½éªŒè¯� ISVNAuthenticationManager authManager =
 	 * SVNWCUtil.createDefaultAuthenticationManager();
 	 * repository.setAuthenticationManager(authManager); return true; } catch
 	 * (SVNException svne) { svne.printStackTrace(); return false; } }
@@ -138,9 +160,9 @@ public class SVNUtil {
 
 						@Override
 						public void handleDirEntry(SVNDirEntry entry) throws SVNException {
-
-							if (entry.getKind().equals(SVNNodeKind.FILE)) {
-								paths.add(entry.getPath());
+							
+							if (entry.getKind().equals(SVNNodeKind.FILE) && entry.getPath().endsWith(".java")) {
+								paths.add(entry.getPath());								
 							}
 						}
 
@@ -148,6 +170,8 @@ public class SVNUtil {
 		} catch (SVNException e) {
 			e.printStackTrace();
 		}
+		
+		System.out.println(paths.size() + " files to be processed.");
 		return paths;
 	}
 
@@ -162,8 +186,7 @@ public class SVNUtil {
 							int revision = (int) svnlogentry.getRevision();
 							if (!commitinfo.containsKey(revision)) {
 								commitinfo.put(revision, svnlogentry.getMessage());
-							}
-							else {
+							} else {
 								System.out.println("revision repeated!");
 							}
 						}
@@ -177,6 +200,9 @@ public class SVNUtil {
 
 	public List<String[]> svnAnnotate(String path, SVNRevision startRevision, SVNRevision endRevision) {
 		try {
+			System.out.println();
+			linemsg.clear();
+			System.out.println("processing " + path);
 			SVNURL url = SVNURL.parseURIEncoded(path);
 			svnlogclient.doAnnotate(url, startRevision, startRevision, endRevision, new ISVNAnnotateHandler() {
 				public void handleLine(Date date, long revision, String author, String line) {
@@ -208,14 +234,15 @@ public class SVNUtil {
 	}
 
 	/*
-	 * public void filterCommitHistoryTest() throws Exception { // 过滤条件 // final
-	 * SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd"); // final
-	 * Date begin = format.parse("2014-02-13"); // final Date end =
+	 * public void filterCommitHistoryTest() throws Exception { // è¿‡æ»¤æ�¡ä»¶
+	 * // final SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd"); //
+	 * final Date begin = format.parse("2014-02-13"); // final Date end =
 	 * format.parse("2014-02-14"); final String author = ""; // long
 	 * startRevision = 50306; SVNRevision startRevision =
 	 * SVNRevision.create(1090003); SVNRevision endRevision = SVNRevision.HEAD;
 	 * final List<String> history = new ArrayList<String>(); // String[]
-	 * 为过滤的文件路径前缀，为空表示不进行过滤 repository.log(new String[] {
+	 * ä¸ºè¿‡æ»¤çš„æ–‡ä»¶è·¯å¾„å‰�ç¼€ï¼Œä¸ºç©ºè¡¨ç¤ºä¸�è¿›è¡Œè¿‡æ»¤
+	 * repository.log(new String[] {
 	 * "/tomcat/trunk/java/org/apache/catalina/valves/StuckThreadDetectionValve.java"
 	 * }, startRevision.getNumber(), endRevision.getNumber(), true, true, new
 	 * ISVNLogEntryHandler() {
@@ -227,10 +254,11 @@ public class SVNUtil {
 	public static void main(String[] args) throws Exception {
 		String url = "http://svn.apache.org/repos/asf";
 		String rootPath = "/tomcat/trunk/java/org/apache/catalina/valves/";
-		String annotatePath = "/tomcat/trunk/java/org/apache/catalina/valves/StuckThreadDetectionValve.java";
+		// String annotatePath =
+		// "/tomcat/trunk/java/org/apache/catalina/valves/StuckThreadDetectionValve.java";
 		SVNRevision startRevision = SVNRevision.create(1090003);
-		SVNRevision endRevision = SVNRevision.create(1090003);
-		//SVNRevision endRevision = SVNRevision.HEAD;
+		SVNRevision endRevision = SVNRevision.create(-1);
+		// SVNRevision endRevision = SVNRevision.HEAD;
 		// String[] paths = {
 		// "/tomcat/trunk/java/org/apache/catalina/valves/StuckThreadDetectionValve.java",
 		// "/tomcat/trunk/java/org/apache/catalina/valves/AbstractAccessLogValve.java"
@@ -240,16 +268,50 @@ public class SVNUtil {
 
 		SVNUtil su = new SVNUtil(url);
 
-		System.out.println("SVN login succeeded!");
+		System.out.println("SVN info fetch begins...");
 		List<String> logPaths = new ArrayList<String>();
-		for (String path : su.svnList(url + rootPath, endRevision, endRevision)) {
-			logPaths.add(rootPath + path);
-		}		
-		
+		for (String fileName : su.svnList(url + rootPath, endRevision, endRevision)) {
+			logPaths.add(rootPath + fileName);
+		}
+
 		su.svnLog(logPaths.toArray(new String[0]), startRevision, endRevision);
-		//su.getCommitinfo();
-		su.svnAnnotate(url + annotatePath, startRevision, endRevision);
-		su.getLinemsg();
+		// su.getCommitinfo();
+		for (String annotatePath : logPaths) {
+			// clear linemsg?
+			String annotatePath1 =
+			"/tomcat/trunk/java/org/apache/catalina/valves/StuckThreadDetectionValve.java";
+			su.svnAnnotate(url + annotatePath1, startRevision, endRevision);
+			break;
+			// su.getLinemsg();
+
+		}
+		List<String> issueIds = su.getIssueidFrLinemsg();
+
+		System.out.println("Issue info fetch begins...");
+		IssueTrackerUtil itu = new IssueTrackerUtil();
+		XmlUtils xu = new XmlUtils();
+		String issueUrl = "https://issues.apache.org/bugzilla/show_bug.cgi?ctype=xml&id=";
+		for (String id : issueIds) {
+			System.out.println("get issue info for issueId " + id);
+			String filename = id + ".xml";
+			try {
+				File file = new File(filename);
+				if (!file.exists()) {
+					file.createNewFile();
+					String xmlctnt = itu.getIssueXml(issueUrl);
+					FileWriter fw = new FileWriter(file.getAbsoluteFile());
+					BufferedWriter bw = new BufferedWriter(fw);
+					bw.write(xmlctnt);
+					bw.close();
+				}
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			String[] res = xu.parserXml(filename);
+			System.out.println(res[0]);
+			System.out.println(res[1]);
+		}
+
 	}
 
 }
