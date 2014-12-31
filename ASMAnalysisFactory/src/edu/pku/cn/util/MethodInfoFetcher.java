@@ -52,7 +52,7 @@ public class MethodInfoFetcher {
 		// su.getCommitinfo();
 		for (String annotatePath : logPaths) {
 			// clear linemsg! [Done]
-			//String annotatePath1 =
+			String annotatePath1 = "/tomcat/trunk/java/org/apache/catalina/valves/ValveBase.java";
 			//"/tomcat/trunk/java/org/apache/catalina/valves/StuckThreadDetectionValve.java";
 			su.svnAnnotate(url + annotatePath, startRevision, endRevision);
 			List<String[]> linemsgs = su.getLinemsg();
@@ -61,15 +61,16 @@ public class MethodInfoFetcher {
 			IssueTrackerUtil itu = new IssueTrackerUtil();
 			XmlUtils xu = new XmlUtils();
 			
-			String[] res = null;
+			Map<String, String[]> res = new HashMap<String, String[]>();
+			String tmp = "";
 			for (String id : issueIds) {
 				System.out.println("get issue info for issueId " + id);
-				String filename = id + ".xml";
+				String filename = "xml/" + id + ".xml";
 				try {
 					File file = new File(filename);
 					if (!file.exists()) {
 						file.createNewFile();
-						String xmlctnt = itu.getIssueXml(issueUrl);
+						String xmlctnt = itu.getIssueXml(issueUrl + id);
 						FileWriter fw = new FileWriter(file.getAbsoluteFile());
 						BufferedWriter bw = new BufferedWriter(fw);
 						bw.write(xmlctnt);
@@ -78,17 +79,18 @@ public class MethodInfoFetcher {
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
-				res = xu.parserXml(filename);
+				String[] tmpr = xu.parserXml(filename);
+				res.put(id, tmpr);
+				
+				//for output need
+				tmp += "(" + id + ")";
+					for (int i = 0; i < tmpr.length; i++)
+						tmp += tmpr[i] + "\n";
 				//System.out.println(res[0]);
 				//System.out.println(res[1]);
 			}
-			String tmp = "";
-			if (res != null){
-				for (int i = 0; i < res.length; i++)
-					tmp += res[i] + "\n";
-			}
 			mipacks.put(annotatePath, new MethodInfoPack(annotatePath, linemsgs.get(0)[1], tmp));
-			//break;
+			break;
 		}
 		
 		System.out.println();
@@ -103,7 +105,7 @@ public class MethodInfoFetcher {
 		String issueUrl = "https://issues.apache.org/bugzilla/show_bug.cgi?ctype=xml&id=";
 		String rootPath = "/tomcat/trunk/java/org/apache/catalina/valves/";
 		//String rootPath = "/tomcat/trunk/java/org/apache/catalina/";
-		SVNRevision startRevision = SVNRevision.create(1090003);
+		SVNRevision startRevision = SVNRevision.create(0);
 		SVNRevision endRevision = SVNRevision.create(1090003);
 		
 		MethodInfoFetcher miFetcher = new MethodInfoFetcher();

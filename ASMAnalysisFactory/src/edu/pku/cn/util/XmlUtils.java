@@ -115,7 +115,7 @@ public class XmlUtils {
 					}
 				}
 			}
-			System.out.println("Ω‚ŒˆÕÍ±œ");
+			System.out.println("Null XML res");
 		} catch (FileNotFoundException e) {
 			System.out.println(e.getMessage());
 		} catch (ParserConfigurationException e) {

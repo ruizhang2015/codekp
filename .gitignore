@@ -2,3 +2,5 @@ bin
 asm
 .metadata
 ERMS
+xml
+/clientdb.xml

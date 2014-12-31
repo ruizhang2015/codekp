@@ -60,7 +60,7 @@ public class IssueTrackerUtil {
 	public static void main(String[] args) {
 		IssueTrackerUtil itu = new IssueTrackerUtil();
 		XmlUtils xu = new XmlUtils();
-		String id = "50306";
+		String id = "49099";
 		//String id = "57004";
 		String url = "https://issues.apache.org/bugzilla/show_bug.cgi?ctype=xml&id=" + id;
 		String filename = id + ".xml";

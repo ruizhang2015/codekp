@@ -86,12 +86,11 @@ public class SVNUtil {
 	}
 
 	public List<String[]> getLinemsg() {
-		/*int i = 0;
-		for (String[] strs : linemsg) {
-			System.out.println(i++);
-			System.out.println("[" + strs[0] + "]" + strs[1]);
-			System.out.println(strs[2]);
-		}*/
+		/*
+		 * int i = 0; for (String[] strs : linemsg) { System.out.println(i++);
+		 * System.out.println("[" + strs[0] + "]" + strs[1]);
+		 * System.out.println(strs[2]); }
+		 */
 		return this.linemsg;
 	}
 
@@ -114,7 +113,7 @@ public class SVNUtil {
 				String r = strs[1].substring(startIndex, i);
 				if (!res.contains(r)) {
 					res.add(r);
-					//System.out.println(r);
+					// System.out.println(strs[]);
 				}
 			}
 		}
@@ -123,15 +122,15 @@ public class SVNUtil {
 
 	/*
 	 * private static void setupLibrary() { //
-	 * å¯¹äºŽä½¿ç”¨http://å’Œhttpsï¼„1¤7// DAVRepositoryFactory.setup(); //
-	 * å¯¹äºŽä½¿ç”¨svnï¼„1¤7/ /å’Œsvn+xxxï¼„1¤7/ /
+	 * å¯¹äºŽä½¿ç”¨http://å’Œhttpsï¼ 1�77// DAVRepositoryFactory.setup(); //
+	 * å¯¹äºŽä½¿ç”¨svnï¼ 1�77/ /å’Œsvn+xxxï¼ 1�77/ /
 	 * SVNRepositoryFactoryImpl.setup(); // å¯¹äºŽä½¿ç”¨file://
 	 * FSRepositoryFactory.setup(); }
 	 * 
-	 * public boolean login() { setupLibrary(); try { // åˆ›å»ºåº“è¿žæŽ„1¤7
+	 * public boolean login() { setupLibrary(); try { // åˆ›å»ºåº�1�7�è¿žæŽ�1�7�1�77
 	 * repository =
 	 * SVNRepositoryFactoryImpl.create(SVNURL.parseURIEncoded(this.svnRoot)); //
-	 * èº«ä»½éªŒè¯� ISVNAuthenticationManager authManager =
+	 * èº«ä»½éªŒè¯ￄ1�7 ISVNAuthenticationManager authManager =
 	 * SVNWCUtil.createDefaultAuthenticationManager();
 	 * repository.setAuthenticationManager(authManager); return true; } catch
 	 * (SVNException svne) { svne.printStackTrace(); return false; } }
@@ -160,9 +159,9 @@ public class SVNUtil {
 
 						@Override
 						public void handleDirEntry(SVNDirEntry entry) throws SVNException {
-							
+
 							if (entry.getKind().equals(SVNNodeKind.FILE) && entry.getPath().endsWith(".java")) {
-								paths.add(entry.getPath());								
+								paths.add(entry.getPath());
 							}
 						}
 
@@ -170,7 +169,7 @@ public class SVNUtil {
 		} catch (SVNException e) {
 			e.printStackTrace();
 		}
-		
+
 		System.out.println(paths.size() + " files to be processed.");
 		return paths;
 	}
@@ -204,7 +203,7 @@ public class SVNUtil {
 			linemsg.clear();
 			System.out.println("processing " + path);
 			SVNURL url = SVNURL.parseURIEncoded(path);
-			svnlogclient.doAnnotate(url, startRevision, startRevision, endRevision, new ISVNAnnotateHandler() {
+			svnlogclient.doAnnotate(url, endRevision, startRevision, endRevision, new ISVNAnnotateHandler() {
 				public void handleLine(Date date, long revision, String author, String line) {
 				}
 
@@ -214,12 +213,12 @@ public class SVNUtil {
 
 				@Override
 				public void handleLine(Date date, long revision, String author, String line, Date arg4, long arg5,
-						String arg6, String arg7, int arg8) throws SVNException {
-					// System.out.println(arg0 + "  " + arg1 + "  " + arg2 +
-					// "  " + arg3 + "  " + arg4 + "  "
-					// + arg5 + "  " + arg6 + "  " + arg7 + "  " + arg8);
+						String arg6, String arg7, int lineNo) throws SVNException {
+					//System.out.println(date + "  " + revision + "  " + author + "  " + line + "  " + arg4 + "  " + arg5
+							//+ "  " + arg6 + "  " + arg7 + "  " + lineNo);
 					// System.out.println(commitinfo.get((int)revision));
-					linemsg.add(new String[] { revision + "", commitinfo.get((int) revision), line });
+					linemsg.add(new String[] { revision + "", commitinfo.get((int) revision), line, author,
+							date.toString(), lineNo + "" });
 				}
 
 				@Override
@@ -241,7 +240,7 @@ public class SVNUtil {
 	 * startRevision = 50306; SVNRevision startRevision =
 	 * SVNRevision.create(1090003); SVNRevision endRevision = SVNRevision.HEAD;
 	 * final List<String> history = new ArrayList<String>(); // String[]
-	 * ä¸ºè¿‡æ»¤çš„æ–‡ä»¶è·¯å¾„å‰�ç¼€ï¼Œä¸ºç©ºè¡¨ç¤ºä¸�è¿›è¡Œè¿‡æ»¤
+	 * ä¸ºè¿‡æ»¤çš�1�7�æ�1�7��1�7�ä»¶è·¯å¾�1�7�å�1�7��ç¼€ï¼Œä¸ºç©ºè¡¨ç¤ºä¸�è¿›è¡Œè¿�1�7�æ»1�7
 	 * repository.log(new String[] {
 	 * "/tomcat/trunk/java/org/apache/catalina/valves/StuckThreadDetectionValve.java"
 	 * }, startRevision.getNumber(), endRevision.getNumber(), true, true, new
@@ -278,8 +277,7 @@ public class SVNUtil {
 		// su.getCommitinfo();
 		for (String annotatePath : logPaths) {
 			// clear linemsg?
-			String annotatePath1 =
-			"/tomcat/trunk/java/org/apache/catalina/valves/StuckThreadDetectionValve.java";
+			String annotatePath1 = "/tomcat/trunk/java/org/apache/catalina/valves/StuckThreadDetectionValve.java";
 			su.svnAnnotate(url + annotatePath1, startRevision, endRevision);
 			break;
 			// su.getLinemsg();
