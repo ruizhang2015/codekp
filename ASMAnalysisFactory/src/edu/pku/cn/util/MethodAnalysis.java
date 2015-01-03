@@ -97,7 +97,7 @@ public class MethodAnalysis {
 	}
 	public static void main(String[] args) throws Exception {
 		MethodAnalysis ma = new MethodAnalysis();
-		ma.analysis("testcase/TestCloseDbConnection");
+		ma.analysis("/testcase/TestCloseDbConnection");
 	}
 
 }

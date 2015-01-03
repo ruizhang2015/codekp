@@ -41,12 +41,14 @@ public abstract class MethodboundAnalysis<Fact, AnalysisType extends DataflowAna
 
 	public Map<String, Integer[]> execute(String className) {
 
-		ClassNodeLoader loader = new ClassNodeLoader("bin/edu/pku/cn/");
+		ClassNodeLoader loader = new ClassNodeLoader("bin");
 		ClassNode cc = loader.loadClassNode(className, 0);
 		
 		Map<String, Integer[]> resMap = new HashMap<String, Integer[]>();
 
 		String tmp = "";
+		
+		System.out.println(className);
 		
 		for (MethodNode method : cc.methods) {
 			List<Stmt> stmtsList = method.getStmts();

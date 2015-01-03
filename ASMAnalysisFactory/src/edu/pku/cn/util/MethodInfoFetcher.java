@@ -63,7 +63,7 @@ public class MethodInfoFetcher {
 			su.svnAnnotate(url + annotatePath, startRevision, endRevision);
 			List<String[]> linemsgs = su.getLinemsg();		
 			
-			List<String> issueIds = su.getIssueidFrLinemsg();
+			//List<String> issueIds = su.getIssueidFrLinemsg();
 			System.out.println("Issue info fetch begins...");
 			IssueTrackerUtil itu = new IssueTrackerUtil();
 			XmlUtils xu = new XmlUtils();
@@ -96,7 +96,7 @@ public class MethodInfoFetcher {
 				//System.out.println(res[0]);
 				//System.out.println(res[1]);
 			}*/
-			Map<String, Integer[]> bounds = ma.analysis(annotatePath);	
+			Map<String, Integer[]> bounds = ma.analysis(annotatePath.substring(0, annotatePath.length()-5));	
 			
 			
 			Map<String, MethodInfoPack> classres = new HashMap<String, MethodInfoPack>();
