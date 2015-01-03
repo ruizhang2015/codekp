@@ -18,6 +18,7 @@
  */
 package edu.pku.cn.util;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -26,23 +27,20 @@ import java.util.Map;
 public class MethodInfoPack {
 	String className;
 	String methodName;
-	String commitInfo;
-	String issueInfo;
+	Map<String, String[]> commitInfo;
+	Map<String, String[]> issueInfo;
+	int begin;
+	int end;
 	
-	public MethodInfoPack(String cname, String ci, String tmp){
+	public MethodInfoPack(String cname, String mname, Map<String, String[]> commitInfoList, Map<String, String[]> issueInfoList, int b, int e){
 		className = cname;
-		methodName = null;
-		commitInfo = ci;
-		issueInfo = tmp; //for short long descs
+		methodName = mname;
+		commitInfo = commitInfoList;
+		issueInfo = issueInfoList; //for short long descs
+		begin =b ;
+		end = e;
 	}
 	
-	public String getCommitInfo(){
-		return commitInfo;
-	}
-	
-	public String getIssueInfo(){
-		return issueInfo;
-	}
 	
 	public String toString(){
 		return ("[pathNmae] " + className + "\n" + "[commitInfo] " + commitInfo + "\n" + "[issueInfo] " + issueInfo);

@@ -149,7 +149,7 @@ public class RefactoredCalleeDataflowAnalysis extends RefactoredBasicDataflowAna
 			public RefactoredDataflow<HashSet<String>, RefactoredCalleeDataflowAnalysis> createDataflow(
 					ClassNode cc, MethodNode method) {
 				// TODO Auto-generated method stub
-				try {
+				/*try {
 					CFG cfg = method.getCFG();
 					RefactoredCalleeDataflowAnalysis analysis = new RefactoredCalleeDataflowAnalysis(cfg);
 					RefactoredDataflow<HashSet<String>, RefactoredCalleeDataflowAnalysis> dataflow = new RefactoredDataflow<HashSet<String>, RefactoredCalleeDataflowAnalysis>(
@@ -159,7 +159,7 @@ public class RefactoredCalleeDataflowAnalysis extends RefactoredBasicDataflowAna
 				} catch (AnalyzerException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
-				}
+				}*/
 				return null;
 			}
 
@@ -167,14 +167,14 @@ public class RefactoredCalleeDataflowAnalysis extends RefactoredBasicDataflowAna
 			public void examineResults(
 					RefactoredDataflow<HashSet<String>, RefactoredCalleeDataflowAnalysis> dataflow) {
 				// TODO Auto-generated method stub
-				HashSet<String>[] facts = dataflow.getAnalysis().facts;
+				/*HashSet<String>[] facts = dataflow.getAnalysis().facts;
 				List<Stmt> stmts = dataflow.getAnalysis().cfg.getMethod().getStmts();
 				for (int i = 0; i < facts.length; i++) {
 					System.out.println(i + ": " + stmts.get(i).toString() +  " ->  " + facts[i]);
-				}
+				}*/
 			}
 		};
-		driver.execute("Test");
+		driver.execute("TestCloseDbConnection");
 	}
 }
 

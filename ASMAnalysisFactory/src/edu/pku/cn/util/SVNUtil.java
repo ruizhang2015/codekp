@@ -119,18 +119,31 @@ public class SVNUtil {
 		}
 		return res;
 	}
+	
+	public String getIssueidFrLinemsg(String[] strs) {
+
+			if (strs[1] != null && strs[1].contains("bugzilla") && strs[1].contains("id=")) {
+				int startIndex = strs[1].indexOf("id=") + 3;
+				int i = startIndex;
+				while ((strs[1].charAt(++i) >= '0') && (strs[1].charAt(i) <= '9'))
+					;
+				return strs[1].substring(startIndex, i);
+					// System.out.println(strs[]);
+			}
+		return null;
+	}
 
 	/*
 	 * private static void setupLibrary() { //
-	 * å¯¹äºŽä½¿ç”¨http://å’Œhttpsï¼ 1�77// DAVRepositoryFactory.setup(); //
-	 * å¯¹äºŽä½¿ç”¨svnï¼ 1�77/ /å’Œsvn+xxxï¼ 1�77/ /
+	 * å¯¹äºŽä½¿ç”¨http://å’Œhttpsï¼ 1�77// DAVRepositoryFactory.setup(); //
+	 * å¯¹äºŽä½¿ç”¨svnï¼ 1�77/ /å’Œsvn+xxxï¼ 1�77/ /
 	 * SVNRepositoryFactoryImpl.setup(); // å¯¹äºŽä½¿ç”¨file://
 	 * FSRepositoryFactory.setup(); }
 	 * 
-	 * public boolean login() { setupLibrary(); try { // åˆ›å»ºåº�1�7�è¿žæŽ�1�7�1�77
+	 * public boolean login() { setupLibrary(); try { // åˆ›å»ºåº�1�7�è¿žæŽ�1�7�1�77
 	 * repository =
 	 * SVNRepositoryFactoryImpl.create(SVNURL.parseURIEncoded(this.svnRoot)); //
-	 * èº«ä»½éªŒè¯ￄ1�7 ISVNAuthenticationManager authManager =
+	 * èº«ä»½éªŒè¯ￄ1�7 ISVNAuthenticationManager authManager =
 	 * SVNWCUtil.createDefaultAuthenticationManager();
 	 * repository.setAuthenticationManager(authManager); return true; } catch
 	 * (SVNException svne) { svne.printStackTrace(); return false; } }
@@ -240,7 +253,7 @@ public class SVNUtil {
 	 * startRevision = 50306; SVNRevision startRevision =
 	 * SVNRevision.create(1090003); SVNRevision endRevision = SVNRevision.HEAD;
 	 * final List<String> history = new ArrayList<String>(); // String[]
-	 * ä¸ºè¿‡æ»¤çš�1�7�æ�1�7��1�7�ä»¶è·¯å¾�1�7�å�1�7��ç¼€ï¼Œä¸ºç©ºè¡¨ç¤ºä¸�è¿›è¡Œè¿�1�7�æ»1�7
+	 * ä¸ºè¿‡æ»¤çš�1�7�æ�1�7��1�7�ä»¶è·¯å¾�1�7�å�1�7��ç¼€ï¼Œä¸ºç©ºè¡¨ç¤ºä¸�è¿›è¡Œè¿�1�7�æ»1�7
 	 * repository.log(new String[] {
 	 * "/tomcat/trunk/java/org/apache/catalina/valves/StuckThreadDetectionValve.java"
 	 * }, startRevision.getNumber(), endRevision.getNumber(), true, true, new
