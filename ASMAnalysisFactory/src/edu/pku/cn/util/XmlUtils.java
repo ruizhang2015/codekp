@@ -108,7 +108,7 @@ public class XmlUtils {
 									//System.out.println(lnode.getNodeName() + "::" + lnode.getTextContent());
 									res2 = lnode.getTextContent();
 									if (res1 != null)
-										return new String[]{res1, res2};
+										return new String[]{"*short_desc*" + res1, "*long_desc*" + res2};
 								}
 							}
 						}

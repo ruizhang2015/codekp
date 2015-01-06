@@ -31,19 +31,40 @@ public class MethodInfoPack {
 	Map<String, String[]> issueInfo;
 	int begin;
 	int end;
+	String doc;
 	
-	public MethodInfoPack(String cname, String mname, Map<String, String[]> commitInfoList, Map<String, String[]> issueInfoList, int b, int e){
+	public MethodInfoPack(String cname, String mname, Map<String, String[]> commitInfoList, Map<String, String[]> issueInfoList, int b, int e, String doc){
 		className = cname;
 		methodName = mname;
 		commitInfo = commitInfoList;
 		issueInfo = issueInfoList; //for short long descs
 		begin =b ;
 		end = e;
+		this.doc = doc;
 	}
 	
 	
 	public String toString(){
-		return ("[pathNmae] " + className + "\n" + "[commitInfo] " + commitInfo + "\n" + "[issueInfo] " + issueInfo);
+		System.out.println(methodName);
+		String[] strs;
+		String tmpC = "";
+		for (String key : commitInfo.keySet()){
+			tmpC += "revision-" + key + " = ";
+			for(String string : commitInfo.get(key)){
+				tmpC += string + " ";
+			}
+			tmpC += "\n";
+		}
+		String tmpI = "";
+		for (String key : issueInfo.keySet()){
+			tmpI += "revision-" + key + " = ";
+			for(String string : issueInfo.get(key)){
+				tmpI += string + " ";
+			}
+			tmpI += "\n";
+		}
+		
+		return ("[pathNmae] " + className + "\n" + "[methodNmae] " + methodName + "\n" +"[commitInfo] " + tmpC + "\n" + "[issueInfo] " + tmpI + "\n" + "[docInfo] " + doc  + "\n\n\n");
 	}
 }
 

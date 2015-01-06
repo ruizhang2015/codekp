@@ -34,5 +34,6 @@
 	<classpathentry kind="lib" path="lib/sqljet-1.1.10.jar"/>
 	<classpathentry kind="lib" path="lib/svnkit-cli-1.8.7.jar"/>
 	<classpathentry kind="lib" path="lib/svnkit-javahl16-1.8.7.jar"/>
+	<classpathentry kind="lib" path="lib/tools.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

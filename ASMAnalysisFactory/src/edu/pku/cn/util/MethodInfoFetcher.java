@@ -56,15 +56,19 @@ public class MethodInfoFetcher {
 		MethodAnalysis ma = new MethodAnalysis(); //bound analysis
 		Map<String, Map<String, MethodInfoPack>> fres = new HashMap<String, Map<String, MethodInfoPack>>();
 		// su.getCommitinfo();
+		//String classname = ".." + "/tomcat/trunk/java/org/apache/catalina/valves/AccessLogValve.java";
+		JavadocUtils ju = new JavadocUtils();
+		Map<String, String> docMap = null;
 		for (String annotatePath : logPaths) {
 			// clear linemsg! [Done]
-			String annotatePath1 = "/tomcat/trunk/java/org/apache/catalina/valves/ValveBase.java";
+			//String annotatePath = "/tomcat/trunk/java/org/apache/catalina/valves/RemoteHostValve.java";
 			//"/tomcat/trunk/java/org/apache/catalina/valves/StuckThreadDetectionValve.java";
 			su.svnAnnotate(url + annotatePath, startRevision, endRevision);
 			List<String[]> linemsgs = su.getLinemsg();		
 			
 			//List<String> issueIds = su.getIssueidFrLinemsg();
 			System.out.println("Issue info fetch begins...");
+			docMap = ju.processDoc(".." + annotatePath);
 			IssueTrackerUtil itu = new IssueTrackerUtil();
 			XmlUtils xu = new XmlUtils();
 			
@@ -101,10 +105,11 @@ public class MethodInfoFetcher {
 			
 			Map<String, MethodInfoPack> classres = new HashMap<String, MethodInfoPack>();
 			for (String method : bounds.keySet()){
+				//System.out.println(method);
 				Map<String, String[]> commitInfoList = new HashMap<String, String[]>();
 				Map<String, String[]> issueInfoList = new HashMap<String, String[]>();
 				Integer[] bound = bounds.get(method);
-				for (int i = bound[0]-1; i<bound[1]-1; i++){
+				for (int i = bound[0]-1; i<bound[1]; i++){
 					String[] lineStrings = linemsgs.get(i);
 					String revison = lineStrings[0];
 					if (!commitInfoList.containsKey(revison)){
@@ -134,10 +139,35 @@ public class MethodInfoFetcher {
 						issueInfoList.put(revison, res.get(id));	
 					}
 				}
-				classres.put(method, new MethodInfoPack(annotatePath, method, commitInfoList, issueInfoList, bound[0], bound[1]));
+				//System.out.println(method);
+				String mString = method;
+				String method0 = method.split("\\(")[0];
+				String doc = null;
+				int[] is = {0, 1, -1, 2, -2, 3, -3, 4, -4, 5 ,-5};
+				for (int i: is){
+					method = method0 + (bound[0] + i);
+					if ((doc=docMap.get(method))!=null){
+						break;
+					}
+				}
+				 
+				if (doc == null ){
+					System.out.println(mString);
+				}
+				if (method.equals("log")){
+					System.out.println(mString);
+				}
+				//System.out.println(method);
+				if (classres.containsKey(method)){
+					System.out.println("repeated !!" + method);
+				}
+
+				classres.put(method, new MethodInfoPack(annotatePath, method, commitInfoList, issueInfoList, bound[0], bound[1], docMap.get(method)));
 			}
-			fres.put(annotatePath1, classres);
-			break;
+			System.out.println(classres);
+			
+			//fres.put(annotatePath, classres);
+			//break;
 		}
 		
 		return fres;

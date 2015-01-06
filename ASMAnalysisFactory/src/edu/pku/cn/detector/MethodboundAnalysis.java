@@ -41,30 +41,32 @@ public abstract class MethodboundAnalysis<Fact, AnalysisType extends DataflowAna
 
 	public Map<String, Integer[]> execute(String className) {
 
-		ClassNodeLoader loader = new ClassNodeLoader("bin");
+		ClassNodeLoader loader = new ClassNodeLoader("tomcatbin");
 		ClassNode cc = loader.loadClassNode(className, 0);
 		
 		Map<String, Integer[]> resMap = new HashMap<String, Integer[]>();
 
 		String tmp = "";
 		
-		System.out.println(className);
+		//System.out.println(className);
 		
 		for (MethodNode method : cc.methods) {
 			List<Stmt> stmtsList = method.getStmts();
-			System.out.println(method.getFullName());
+			//System.out.println(method.getFullName());
 			int min = Integer.MAX_VALUE;
 			int max = Integer.MIN_VALUE;
 			for (Stmt stmt : stmtsList){
+				
 				tmp = (stmt.toString());
+				//System.out.println(tmp);
 				if (tmp.startsWith("Line:")){
 					int no = Integer.parseInt(tmp.split(" ")[0].split(":")[1]);
 					if (no > max) max = no;
 					if (no < min) min = no;
 				}
 			}
-			System.out.println(min + " " + max);
-			System.out.println();
+			//System.out.println(min + " " + max);
+			//System.out.println();
 			resMap.put(method.getFullName(), new Integer[]{min, max});
 		}
 		return resMap;
