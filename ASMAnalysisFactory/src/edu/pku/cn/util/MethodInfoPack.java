@@ -45,8 +45,8 @@ public class MethodInfoPack {
 	
 	
 	public String toString(){
-		System.out.println(methodName);
-		String[] strs;
+		//System.out.println(methodName);
+		//String[] strs;
 		String tmpC = "";
 		for (String key : commitInfo.keySet()){
 			tmpC += "revision-" + key + " = ";
@@ -64,7 +64,7 @@ public class MethodInfoPack {
 			tmpI += "\n";
 		}
 		
-		return ("[pathNmae] " + className + "\n" + "[methodNmae] " + methodName + "\n" +"[commitInfo] " + tmpC + "\n" + "[issueInfo] " + tmpI + "\n" + "[docInfo] " + doc  + "\n\n\n");
+		return ("[pathName] " + className + "\n" + "[methodName] " + methodName + "\n" +"[commitInfo] " + tmpC + "\n" + "[issueInfo] " + tmpI + "\n" + "[docInfo] " + doc  + "\n\n\n");
 	}
 }
 

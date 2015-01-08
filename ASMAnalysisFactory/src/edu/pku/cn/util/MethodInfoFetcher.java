@@ -59,9 +59,9 @@ public class MethodInfoFetcher {
 		//String classname = ".." + "/tomcat/trunk/java/org/apache/catalina/valves/AccessLogValve.java";
 		JavadocUtils ju = new JavadocUtils();
 		Map<String, String> docMap = null;
-		for (String annotatePath : logPaths) {
+		for (String annotatePath1 : logPaths) {
 			// clear linemsg! [Done]
-			//String annotatePath = "/tomcat/trunk/java/org/apache/catalina/valves/RemoteHostValve.java";
+			String annotatePath = "/tomcat/trunk/java/org/apache/catalina/valves/SemaphoreValve.java";
 			//"/tomcat/trunk/java/org/apache/catalina/valves/StuckThreadDetectionValve.java";
 			su.svnAnnotate(url + annotatePath, startRevision, endRevision);
 			List<String[]> linemsgs = su.getLinemsg();		
@@ -154,9 +154,7 @@ public class MethodInfoFetcher {
 				if (doc == null ){
 					System.out.println(mString);
 				}
-				if (method.equals("log")){
-					System.out.println(mString);
-				}
+
 				//System.out.println(method);
 				if (classres.containsKey(method)){
 					System.out.println("repeated !!" + method);
@@ -167,7 +165,7 @@ public class MethodInfoFetcher {
 			System.out.println(classres);
 			
 			//fres.put(annotatePath, classres);
-			//break;
+			break;
 		}
 		
 		return fres;
