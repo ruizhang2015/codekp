@@ -3,4 +3,4 @@ codekp
 
 Code in Kuaipan
 
-Code for my current feature location project
+My part of code for our current feature location project
