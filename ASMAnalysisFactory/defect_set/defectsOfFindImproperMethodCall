@@ -1,4 +1,0 @@
-java/util/concurrent/locks/Condition wait ()V
-java/util/concurrent/locks/Condition wait (J)V
-java/util/concurrent/locks/Condition wait (JI)V
-java/util/concurrent/locks/Condition notify ()V

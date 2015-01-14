@@ -318,7 +318,7 @@ public class SVNUtil {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-			String[] res = xu.parserXml(filename);
+			String[] res = xu.parserXml("0", filename);
 			System.out.println(res[0]);
 			System.out.println(res[1]);
 		}
