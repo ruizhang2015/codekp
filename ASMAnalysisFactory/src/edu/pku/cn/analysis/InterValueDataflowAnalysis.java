@@ -22,6 +22,7 @@ package edu.pku.cn.analysis;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.PrintStream;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -29,6 +30,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import org.hamcrest.core.IsInstanceOf;
 import org.objectweb.asm.Type;
 import org.objectweb.asm.tree.InsnList;
 import org.objectweb.asm.tree.analysis.AnalyzerException;
@@ -70,6 +72,7 @@ import edu.pku.cn.jir.ReturnStmt;
 import edu.pku.cn.jir.Stmt;
 import edu.pku.cn.jir.StringConstant;
 import edu.pku.cn.jir.TempRef;
+import edu.pku.cn.jir.This;
 import edu.pku.cn.util.AnalysisFactoryManager;
 import edu.pku.cn.util.CodaProperties;
 
@@ -77,6 +80,10 @@ import edu.pku.cn.util.CodaProperties;
 
 public class InterValueDataflowAnalysis extends RefactoredBasicDataflowAnalysis<HashMap<InterJIRValue, InterVarInfo>> {
 
+	Map<JIRValue, String> tempValueMap;
+	List<String> printList = new ArrayList<String>();
+	List<String> loggingList = new ArrayList<String>();
+	
 	public boolean Debug = false;
 
 	int currentLine;
@@ -99,7 +106,8 @@ public class InterValueDataflowAnalysis extends RefactoredBasicDataflowAnalysis<
 	// HashMap<JIRValue, IntraPointsToInfo> pointsToInfos = new
 	// HashMap<JIRValue, IntraPointsToInfo>();
 
-	public InterValueDataflowAnalysis(CFG cfg) {
+	public InterValueDataflowAnalysis(Map<JIRValue, String> tempValueMap2, CFG cfg) {
+		this.tempValueMap = tempValueMap2;
 		this.blockOrder = new ReversePostOrder(cfg);
 		this.isForwards = true;
 		this.cfg = cfg;
@@ -1621,9 +1629,9 @@ public class InterValueDataflowAnalysis extends RefactoredBasicDataflowAnalysis<
 //				System.out.println(block.endStmt);
 //				System.out.println(block.toString());
 //
-//				if (block.getLabel() == 3) {
-//					System.out.println("debug point: ");
-//				}
+				//if (block.getLabel() == 5) {
+				//	System.out.println("debug point: ");
+				//}
 
 				HashMap<InterJIRValue, InterVarInfo> start = getStartFact(block);
 				HashMap<InterJIRValue, InterVarInfo> result = getResultFact(block);
@@ -1795,9 +1803,9 @@ public class InterValueDataflowAnalysis extends RefactoredBasicDataflowAnalysis<
 	}
 
 	public void examineResults() {
-		System.out.println("*****************************************");
+		//System.out.println("*******************examineResults**********************");
 		System.out.println(this.cfg.getMethod().name);
-		System.out.println(this.numIterations);
+		//System.out.println(this.numIterations);
 		Iterator<BasicBlock> i = this.cfg.blockIterator();
 		while (i.hasNext()) {
 			BasicBlock block = i.next();
@@ -1806,26 +1814,98 @@ public class InterValueDataflowAnalysis extends RefactoredBasicDataflowAnalysis<
 			// result 有问题，但下一个block的start是没有问题的
 			HashMap<InterJIRValue, InterVarInfo> result = this.getResultFact(block);
 
-			System.out.println("________________________________");
+			//System.out.println("_______________printTransferResult_start_________________");
 
-			this.printTransferResult(start);
+			//this.printTransferResult(start);
 
-			System.out.println("");
+			//System.out.println("<print stmts in block>");
 
 			for (int m = block.startStmt; m <= block.endStmt; m++) {
-				System.out.println(m + ": " + block.stmts.get(m).toString());
+				Stmt tmp = block.stmts.get(m);
+				if (tmp instanceof AssignStmt){
+					JIRValue left = ((AssignStmt) tmp).left;
+					JIRValue right = ((AssignStmt) tmp).right;
+					if (right instanceof Constant){
+						tempValueMap.put(left, right.toString());
+					}
+					else if (right instanceof IntConstant){
+						tempValueMap.put(left, right.toString());
+					}
+					else if (right instanceof InvokeExpr){
+						InvokeExpr ivkright = (InvokeExpr) ((AssignStmt) tmp).right;
+						JIRValue invoker = ivkright.invoker;
+						if (ivkright.node.name.equals("append") && ivkright.node.owner.equals("java/lang/StringBuilder")){
+							String invokervalue = tempValueMap.get(invoker);
+							JIRValue appendValue = ivkright.params.get(0);
+							if (appendValue instanceof Constant){
+								tempValueMap.put(left, invokervalue + appendValue.toString());
+							}
+							else {
+								tempValueMap.put(left, invokervalue + tempValueMap.get(appendValue));
+							}
+						}
+						else if (ivkright.node.name.equals("toString") && ivkright.node.owner.equals("java/lang/StringBuilder")){
+							String invokervalue = tempValueMap.get(invoker);
+							tempValueMap.put(left, invokervalue);
+						}
+						else if (ivkright.params.size() > 0){
+							JIRValue appendValue = ivkright.params.get(0);
+							if (appendValue instanceof Constant){
+								tempValueMap.put(left, appendValue.toString());
+							}
+							else {
+								tempValueMap.put(left, tempValueMap.get(appendValue));
+							}
+						}
+						//TempRef invoker = ((AssignStmt) tmp).right.invoker.
+					}
+				}
+				else if (tmp instanceof InvokeStmt){
+					InvokeExpr invoke = (InvokeExpr) ((InvokeStmt) tmp).invoke;
+					JIRValue invoker = invoke.invoker;
+					if (invoke.node.name.equals("<init>") && invoke.node.owner.equals("java/lang/StringBuilder")){
+						//String invokervalue = tempValueMap.get(invoker);
+						tempValueMap.put(invoker, invoke.params.get(0).toString());
+					}
+					else if (invoke.node.name.contains("print") && invoke.node.owner.equals("java/io/PrintStream")){
+						if (invoke.params.size() > 0){
+							JIRValue appendValue = invoke.params.get(0);
+							if ((appendValue instanceof Constant)){
+								printList.add(invoke.params.get(0).toString());
+							}
+							else {
+								printList.add(tempValueMap.get(invoke.params.get(0)));
+							}	
+						}
+					}
+					else if (invoke.node.owner.equals("org/apache/juli/logging/Log")){
+						if (invoke.params.size() > 0){
+							JIRValue appendValue = invoke.params.get(0);
+							if ((appendValue instanceof Constant)){
+								loggingList.add(invoke.params.get(0).toString());
+							}
+							else {
+								loggingList.add(tempValueMap.get(invoke.params.get(0)));
+							}
+						}
+					}
+				}
+				//String string = tmp.toString();
+				//System.out.println(m + ": " + string);
 			}
 
-			System.out.println("");
+			//System.out.println("_______printTransferResult_result_____");
 
-			this.printTransferResult(result);
+			//this.printTransferResult(result);
 
-			System.out.println("");
+			//System.out.println("");
 
-			System.out.println("________________________________");
+			//System.out.println("_______________________________end_iteration_________________________________\n");
 		}
+		//System.out.println();
 	}
 
+	
 	public void printCallees() {
 		System.out.println("*****************************************");
 		System.out.println(this.cfg.getMethod().name);
@@ -1835,20 +1915,22 @@ public class InterValueDataflowAnalysis extends RefactoredBasicDataflowAnalysis<
 			System.out.println(callee);
 		}
 	}
-
+	
 	public static void main(String[] args) {
 
 		AnalysisFactoryManager.initial();
 
-		Project project = new Project("D:\\eclipseworkspace\\CODA20110114\\bin\\");
-		CodaProperties.isLibExpland = true;
-		project.addLibPath("lib/");
+		//Project project = new Project("E:\\Code\\IBM\\codekp\\ASMAnalysisFactory\\bin\\");
+		//Project project = new Project("E:\\Code\\IBM\\codekp\\Tomcat\\bin\\");
+		
+		//CodaProperties.isLibExpland = true;
+		//project.addLibPath("lib/");
 
-		try {
-			System.setOut(new PrintStream(new FileOutputStream("output.txt")));
+		/*try {
+			System.setOut(new PrintStream(new FileOutputStream("outputzr.txt")));
 		} catch (FileNotFoundException e1) {
 			e1.printStackTrace();
-		}
+		}*/
 
 		// ClassNodeLoader loader = new ClassNodeLoader(
 		// "D:\\Study\\@PKU\\Research\\SelfPapers\\20100517
@@ -1856,8 +1938,14 @@ public class InterValueDataflowAnalysis extends RefactoredBasicDataflowAnalysis<
 		// String subjectClassName =
 		// "org.apache.bcel.verifier.structurals.LocalVariables";
 
-		ClassNodeLoader loader = new ClassNodeLoader("D:\\eclipseworkspace\\CODA20110114\\bin\\");
-		String subjectClassName = "edu.pku.cn.testcase.TestCloseDbConnection2";
+		//ClassNodeLoader loader = new ClassNodeLoader("../Tomcat/bin/");
+		//String subjectClassName = "org/apache/catalina/valves/StuckThreadDetectionValve_bac";
+		
+		ClassNodeLoader loader = new ClassNodeLoader("tomcatbin");
+		String subjectClassName = "/tomcat/trunk/java/org/apache/catalina/valves/StuckThreadDetectionValve";
+		//ClassNodeLoader loader = new ClassNodeLoader("E:\\Code\\IBM\\codekp\\ASMAnalysisFactory\\bin\\");
+		//String subjectClassName = "edu.pku.cn.testcase.TestCloseDbConnection2";
+		
 		// String subjectClassName = "org.jfree.chart.servlet.ServletUtilities";
 
 		ClassNode cc = loader.loadClassNode(subjectClassName, 0);
@@ -1865,9 +1953,10 @@ public class InterValueDataflowAnalysis extends RefactoredBasicDataflowAnalysis<
 		// ClassNode cc = loader.loadClassNode("edu.pku.cn.testcase.Test", 0);
 
 		InterValueDataflowAnalysis.loader = loader;
+		Map<JIRValue, String> tempValueMap = new HashMap<JIRValue, String>();
 
 		for (MethodNode method : cc.methods) {
-
+			System.out.println();
 			// if (method.name.contains("right")) {
 			// method.getStmts();
 
@@ -1878,14 +1967,24 @@ public class InterValueDataflowAnalysis extends RefactoredBasicDataflowAnalysis<
 				continue;
 			}
 
-			System.out.println(method.name + method.desc);
+			//System.out.println("<method name+desc> " + method.name + method.desc);
 			CFG cfg = method.getCFG();
+			
+			//System.out.println("after get cfg");
 
-			InterValueDataflowAnalysis anlysis = new InterValueDataflowAnalysis(cfg);
+			InterValueDataflowAnalysis anlysis = new InterValueDataflowAnalysis(tempValueMap, cfg);
 			try {
 				anlysis.execute();
 				// anlysis.printCallees();
 				anlysis.examineResults();
+				System.out.println("printList:");
+				for (String str : anlysis.printList){
+					System.out.println(str);
+				}
+				System.out.println("loggingList:");
+				for (String str : anlysis.loggingList){
+					System.out.println(str);
+				}
 			} catch (AnalyzerException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -1924,6 +2023,16 @@ public class InterValueDataflowAnalysis extends RefactoredBasicDataflowAnalysis<
 			}
 			varInfo.objects = newObjs;
 		}
+	}
+
+	public List<String> getLoggingList() {
+		// TODO Auto-generated method stub
+		return this.loggingList;
+	}
+
+	public List<String> getPrintList() {
+		// TODO Auto-generated method stub
+		return this.printList;
 	}
 
 }

@@ -17,6 +17,8 @@ import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
+
+import org.tmatesoft.sqljet.core.internal.lang.SqlParser.id_column_def_return;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -75,7 +77,7 @@ public class XmlUtils {
 		}
 	}
 
-	public String[] parserXml(String in) {
+	public String[] parserXml(String id, String in) {
 		try {
 			DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
 			DocumentBuilder db = dbf.newDocumentBuilder();
@@ -108,7 +110,7 @@ public class XmlUtils {
 									//System.out.println(lnode.getNodeName() + "::" + lnode.getTextContent());
 									res2 = lnode.getTextContent();
 									if (res1 != null)
-										return new String[]{"*short_desc*" + res1, "*long_desc*" + res2};
+										return new String[]{id, "*short_desc*" + res1, "*long_desc*" + res2};
 								}
 							}
 						}
@@ -131,7 +133,7 @@ public class XmlUtils {
 	public static void main(String[] args) {
 		XmlUtils xu = new XmlUtils();
 		// xu.createXml("testcc.xml");
-		System.out.println(xu.parserXml("test.xml")[1]);
+		System.out.println(xu.parserXml("0", "test.xml")[1]);
 
 	}
 

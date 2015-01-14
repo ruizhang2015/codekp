@@ -18,42 +18,39 @@
  */
 package edu.pku.cn.testcase;
 
-import java.io.File;
 import java.sql.*;
-import java.util.Properties;
+
+import org.apache.catalina.valves.StuckThreadDetectionValve;
+import org.apache.juli.logging.Log;
+import org.apache.juli.logging.LogFactory;
+
 
 public class TestCloseDbConnection2 {
+	//String str;
+	private static final Log log = LogFactory.getLog(StuckThreadDetectionValve.class);
 	
-	Connection con;
+	public TestCloseDbConnection2(){
+		//str = "test";
+		//System.out.println("print sth: " 
+				//+ str);
+        if (log.isDebugEnabled()) {
+            log.debug("Monitoring stuck threads with threshold = "
+                    + threshold
+                    + " sec");
+        }
+	}
 
 
 	void wrong(Connection con3) {
+		//String str0 = "strinit";
 		try {
-			// con = DriverManager.getConnection("");
 
-			// int a = 100;
-			// int c = a + j;
-			//
-			// Connection con2 = DriverManager.getConnection("222");
-			// con2.commit();
-			// con = con2;
-
-			con = DriverManager.getConnection("333");
-			con.commit();
-			
-			con.close();
-			// String str = con.toString();
-			//
+			//str0 = "str0test";
+			//System.out.println(str);
 
 		} catch (Exception e) {
-			
+			//System.out.println(str0);
 		} finally {
-
-//			try {
-//				con.close();
-//			} catch (SQLException e) {
-//				
-//			}
 
 			
 		}

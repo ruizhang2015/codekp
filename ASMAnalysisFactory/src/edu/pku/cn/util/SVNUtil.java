@@ -212,7 +212,7 @@ public class SVNUtil {
 
 	public List<String[]> svnAnnotate(String path, SVNRevision startRevision, SVNRevision endRevision) {
 		try {
-			System.out.println();
+			//System.out.println();
 			linemsg.clear();
 			System.out.println("processing " + path);
 			SVNURL url = SVNURL.parseURIEncoded(path);

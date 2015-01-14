@@ -320,6 +320,7 @@ public class RefactoredBasicDataflowAnalysis<Fact> implements DataflowAnalysis<F
 		// TODO Auto-generated method stub
 		Fact fact = startFactMap.get(block);
 		if (fact == null) {
+			//System.out.println("!!!!!!!!!!!!!!!!fact == null");
 			fact = createFact();
 			startFactMap.put(block, fact);
 		}
